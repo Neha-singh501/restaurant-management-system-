@@ -1,0 +1,30 @@
+{
+    "users": [
+        {
+            "id": "ADM001",
+            "full_Name": "Neha Singh",
+            "username": "Neha508",
+            "role": "admin",
+            "email": "nehasingh509@gmail.com",
+            "password": "admin123"
+        },
+        {
+            "id": "STFDE2053",
+            "full_Name": "Nishu Singh",
+            "username": "nishu123",
+            "phone_no": "8907654323",
+            "email": "nishusingh@gmail.com",
+            "password": "nishu@2008",
+            "role": "staff"
+        },
+        {
+            "id": "STF7E99D3",
+            "full_Name": "Sakshi Kumari",
+            "username": "sakshi123",
+            "phone_no": "8907656785",
+            "email": "sakshikumari@gmail.com",
+            "password": "staff2007",
+            "role": "staff"
+        }
+    ]
+}

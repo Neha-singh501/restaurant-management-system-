@@ -1,0 +1,242 @@
+{
+    "menu_item": [
+        {
+            "item_id": 1,
+            "food_name": "Paneer Tikka",
+            "category": "Starters",
+            "price": 220.0,
+            "availability": true
+        },
+        {
+            "item_id": 2,
+            "food_name": "Veg Spring Roll",
+            "category": "Starters",
+            "price": 160.0,
+            "availability": true
+        },
+        {
+            "item_id": 3,
+            "food_name": "Hara Bhara Kabab",
+            "category": "Starters",
+            "price": 180.0,
+            "availability": true
+        },
+        {
+            "item_id": 4,
+            "food_name": "Chilli Paneer",
+            "category": "Starters",
+            "price": 240.0,
+            "availability": true
+        },
+        {
+            "item_id": 5,
+            "food_name": "Paneer Butter Masala",
+            "category": "Main Course",
+            "price": 280.0,
+            "availability": true
+        },
+        {
+            "item_id": 6,
+            "food_name": "Dal Makhani",
+            "category": "Main Course",
+            "price": 240.0,
+            "availability": true
+        },
+        {
+            "item_id": 7,
+            "food_name": "Kadai Paneer",
+            "category": "Main Course",
+            "price": 270.0,
+            "availability": true
+        },
+        {
+            "item_id": 8,
+            "food_name": "Mix Veg",
+            "category": "Main Course",
+            "price": 200.0,
+            "availability": true
+        },
+        {
+            "item_id": 9,
+            "food_name": "Chole Masala",
+            "category": "Main Course",
+            "price": 190.0,
+            "availability": true
+        },
+        {
+            "item_id": 10,
+            "food_name": "Dal Tadka",
+            "category": "Main Course",
+            "price": 170.0,
+            "availability": true
+        },
+        {
+            "item_id": 11,
+            "food_name": "Butter Roti",
+            "category": "Breads",
+            "price": 25.0,
+            "availability": true
+        },
+        {
+            "item_id": 12,
+            "food_name": "Butter Naan",
+            "category": "Breads",
+            "price": 50.0,
+            "availability": true
+        },
+        {
+            "item_id": 13,
+            "food_name": "Garlic Naan",
+            "category": "Breads",
+            "price": 65.0,
+            "availability": true
+        },
+        {
+            "item_id": 14,
+            "food_name": "Laccha Paratha",
+            "category": "Breads",
+            "price": 55.0,
+            "availability": true
+        },
+        {
+            "item_id": 15,
+            "food_name": "Steamed Rice",
+            "category": "Rice",
+            "price": 120.0,
+            "availability": true
+        },
+        {
+            "item_id": 16,
+            "food_name": "Jeera Rice",
+            "category": "Rice",
+            "price": 140.0,
+            "availability": true
+        },
+        {
+            "item_id": 17,
+            "food_name": "Veg Biryani",
+            "category": "Rice",
+            "price": 230.0,
+            "availability": true
+        },
+        {
+            "item_id": 18,
+            "food_name": "Masala Dosa",
+            "category": "South Indian",
+            "price": 120.0,
+            "availability": true
+        },
+        {
+            "item_id": 19,
+            "food_name": "Idli Sambar",
+            "category": "South Indian",
+            "price": 90.0,
+            "availability": true
+        },
+        {
+            "item_id": 20,
+            "food_name": "Uttapam",
+            "category": "South Indian",
+            "price": 110.0,
+            "availability": false
+        },
+        {
+            "item_id": 21,
+            "food_name": "Veg Hakka Noodles",
+            "category": "Chinese",
+            "price": 170.0,
+            "availability": true
+        },
+        {
+            "item_id": 22,
+            "food_name": "Veg Fried Rice",
+            "category": "Chinese",
+            "price": 160.0,
+            "availability": true
+        },
+        {
+            "item_id": 23,
+            "food_name": "Veg Manchurian",
+            "category": "Chinese",
+            "price": 190.0,
+            "availability": true
+        },
+        {
+            "item_id": 24,
+            "food_name": "Margherita Pizza",
+            "category": "Fast Food",
+            "price": 250.0,
+            "availability": true
+        },
+        {
+            "item_id": 25,
+            "food_name": "Veg Burger",
+            "category": "Fast Food",
+            "price": 120.0,
+            "availability": true
+        },
+        {
+            "item_id": 26,
+            "food_name": "French Fries",
+            "category": "Fast Food",
+            "price": 110.0,
+            "availability": true
+        },
+        {
+            "item_id": 27,
+            "food_name": "White Sauce Pasta",
+            "category": "Fast Food",
+            "price": 210.0,
+            "availability": true
+        },
+        {
+            "item_id": 28,
+            "food_name": "Gulab Jamun",
+            "category": "Desserts",
+            "price": 70.0,
+            "availability": true
+        },
+        {
+            "item_id": 29,
+            "food_name": "Brownie with Ice Cream",
+            "category": "Desserts",
+            "price": 160.0,
+            "availability": true
+        },
+        {
+            "item_id": 30,
+            "food_name": "Ice Cream Scoop",
+            "category": "Desserts",
+            "price": 60.0,
+            "availability": true
+        },
+        {
+            "item_id": 31,
+            "food_name": "Masala Chai",
+            "category": "Beverages",
+            "price": 30.0,
+            "availability": true
+        },
+        {
+            "item_id": 32,
+            "food_name": "Cold Coffee",
+            "category": "Beverages",
+            "price": 120.0,
+            "availability": true
+        },
+        {
+            "item_id": 33,
+            "food_name": "Fresh Lime Soda",
+            "category": "Beverages",
+            "price": 70.0,
+            "availability": true
+        },
+        {
+            "item_id": 34,
+            "food_name": "Sweet Lassi",
+            "category": "Beverages",
+            "price": 80.0,
+            "availability": true
+        }
+    ]
+}

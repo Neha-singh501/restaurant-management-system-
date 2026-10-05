@@ -1,0 +1,12 @@
+{
+    "inventory": [
+        {
+            "id": "FD001",
+            "name": "ghee",
+            "category": "starters",
+            "quantity": 4,
+            "unit": "kg",
+            "price": 300.0
+        }
+    ]
+}

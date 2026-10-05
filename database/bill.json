@@ -1,0 +1,17 @@
+{
+    "bill": [
+     
+        {
+            "bill_id": "BILL893E07",
+            "order_id": "ORD0269EE",
+            "customer_name": "Nishu",
+            "table_id": "109",
+            "subtotal": 190.0,
+            "gst": 9.5,
+            "grand_total": 199.5,
+            "payment_method": "cash",
+            "payment_status": "paid",
+            "created_at": "2026-10-05 07:39"
+        }
+    ]
+}

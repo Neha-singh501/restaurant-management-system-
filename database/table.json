@@ -1,0 +1,32 @@
+{
+    "table": [
+        {
+        "vip": {
+            "capacity": "6",
+            "available_tables": [
+                100,
+                101,
+                102
+            ]
+        },
+        "medium": {
+            "capacity": "4",
+            "available_tables": [
+                103,
+                104,
+                105
+            ]
+        },
+        "short": {
+            "capacity": "2",
+            "available_tables": [
+                106,
+                107,
+                108,
+                109,
+                110
+             ]
+        }
+        }
+    ]
+}
