@@ -3,7 +3,7 @@ from menu_management.menu_manage import Menu_manage
 from staff_management.staff_manage import register_staff
 from booking_management.booking_table import BookingTable
 from order_management.order_manage import OrderManagement
-# from billing_management.billing_payment import BillManagement
+from billing_management.billing_payment import BillManagement
 # from inventory_management.inventory import Inventory_Manage
 
 class Dashboard:
@@ -47,9 +47,9 @@ class Dashboard:
                 ord.order_menu()
                 
             elif choice == "6":
-                # bil = BillManagement()
-                # bil.billing_menu()
-                pass
+                bil = BillManagement()
+                bil.billing_menu()
+               
                 
             elif choice == "7":
                 return

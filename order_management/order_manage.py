@@ -3,6 +3,7 @@ import os
 import json
 import uuid
 from datetime import datetime
+from validation.validate import get_fullname
 
 
 class OrderManagement:
@@ -49,12 +50,6 @@ class OrderManagement:
         except (FileNotFoundError, json.JSONDecodeError):
             return []
 
-    # def find_menu_item(self, menu, item_id):
-    #     for item in menu:
-    #         if item.get("item_id") == item_id:
-    #             return item
-    #     return None
-
     def generate_order_id(self,order):
 
         existing_id = {ord.get("order_id") for ord in order}
@@ -64,13 +59,11 @@ class OrderManagement:
             if order_id not in existing_id :
                 return order_id
 
-
- 
     def order_menu(self):
         while True:
             print("\n" + "="*30)
             print("          ORDER MANAGE ")
-            print("."*30)
+            print("="*30)
             print("\n1. Create New Order")
             print("2. View All Orders")
             print("3. Update Orders")
@@ -95,43 +88,50 @@ class OrderManagement:
 
     def create_order(self):
             order_items = []
-           
-            booking_data = self.load_booking()
-           
-            bookings = booking_data["booking"]
 
-            if not bookings:
-                print("\n Booking Not Found.")
+            booking_id = None
+            table_id  = None
+
+            print("\n1. Dine in")
+            print("2. Takeway")
+
+            choice = input("Enter Choice : ").strip()
+
+            if choice == "1":
+                booking_data = self.load_booking()
+                bookings = booking_data["booking"]
+
+                if not bookings:
+                    print("\n Booking Not Found.")
+                    return
+
+                booking_id = input("Enter Booking ID : ").strip().upper()
+
+                found_booking = None
+
+                for booking in bookings:
+                    if booking.get("booking_id") == booking_id:
+                        found_booking = booking
+                        break
+                if found_booking is None:
+                    print("\nBooking ID not Found.")
+                    return
+    #status check
+
+                if found_booking.get("status") != "occupied":
+
+                    print("\n Order can't be created because the table is not currently occupied.")
+                    return
+
+                customer_name = found_booking.get("customer_name")
+                table_id = found_booking.get("table_id")
+
+            elif choice == "2":
+                customer_name =  get_fullname()
+            else :
+                print("Invalid Choice!..")
                 return
 
-            booking_id = input("Enter Booking ID : ").strip().upper()
-
-            found_booking = None
-
-            for booking in bookings:
-                if booking.get("booking_id") == booking_id:
-                    found_booking = booking
-                    break
-            if found_booking is None:
-                print("\nBooking ID not Found.")
-                return
-#status check
-
-            if found_booking.get("status") != "occupied":
-
-                print("\n Order can't be created because the table is not currently occupied.")
-                return
-
-            customer_name = found_booking.get("customer_name")
-            table_id = found_booking.get("table_id")
-
-            # print("\n" + "."*50)
-            # print("         CREATE ORDER")
-            # print("."*50)
-
-            # print(f"customer Name : {customer_name}")
-            # print(f"Table No : {table_id}")
-            # print(f"Booking ID : {booking_id}")
 #menu show
             menu = self.load_menu()
 
@@ -139,20 +139,24 @@ class OrderManagement:
                 print("\n Menu is not available.")
                 return
 
-            print("\n" + "-"*80)
+            print("\n" + "-"*90)
 
-            print(f"{'item_id' : <10}{'name':<25}{'category': <20}{'price':<20}")
+            print(f"{'item_id' : <10}{'name':<25}{'category': <20}{'half_price':<20}{'full_price':<20}")
 
-            print("."*70)
+            print("."*90)
 
             for item in menu:
                 if item.get("availability"):
-                    print(f"{item.get('item_id') : <10}{item.get('food_name') : <25}{item.get('category') : <20}{item.get('price') : <10}")
+                    print(f"{item.get('item_id'):<10}{item.get('food_name'):<25}{item.get('category'):<20}{item.get('half_price'):<20}{item.get('full_price'):<20}")
 
-            print("="*70)
+            print("="*90)
             while True:
+                try:
+                    item_id = int(input("Enter Item ID : ").strip())
+                except:
+                    print("Please Enter Number")
+                    continue
 
-                item_id = int(input("Enter Item ID : ").strip())
                 selected_item = None
                 for item in menu:
                     if item.get("item_id") == item_id:
@@ -165,10 +169,30 @@ class OrderManagement:
                 if not selected_item.get("availability"):
                     print("This Item is not available")
                     continue
+                try:
+                    
+                    quantity = int(input("Enter Quantity : ").strip())
+                except:
+                    print("Enter Number")
+                    continue
 
-                quantity = int(input("Enter Quantity : ").strip())
+                if quantity <=0:
+                    print("Quantity must be 1")
+                    continue
 
-                price = float(selected_item.get("price"))
+                print("\n -----select Size---- ")
+                print("1.Half Size")
+                print("2.Full Size")
+
+                choice = input("Enter Size : ").strip()
+                if choice == "1":
+                    price = float(selected_item.get("half_price"))
+                elif choice == "2":
+                    price = float(selected_item.get("full_price"))
+                else:
+                    print("Invalid Choice")
+                    return
+
                 subtotal = price*quantity
 
                 order_items.append({
@@ -226,23 +250,24 @@ class OrderManagement:
             print("\nOrder not found")
             return
 
-        print("\n" + "="*50)
-        print("                 ORDER LIST")
-        print("\n" + "="*100)
-        print(f"{'Order ID' :<14}{'booking_id' :<15}{'Customer Name' :<20}{'Table No' :<10}{'Total Amount' :<12}{'Status' :<15}{'Created At' :<20}")
+        print("\n" + "="*105)
+        print("                                                   ORDER LIST")
+        print("" + "="*105)
+        print(f"{'Order ID' :<14}{'booking_id' :<15}{'Customer Name' :<20}{'Table No' :<10}{'Total Amount' :<20}{'Status' :<15}{'Created At' :<20}")
 
-        print("."*100)
+        print("="*105)
 
         for order in orders:
+            booking_id = order.get("booking_id") or "-"
+            table_id = order.get("table_id") or "Takeway"
             print(f"{order.get('order_id') :<14}"
-                  f"{order.get('booking_id') :<15}"
+                  f"{booking_id :<15}"
                   f"{order.get('customer_name') :<20}"
-                  f"{order.get('table_id') :<10}"
-                  f"{order.get('total_amount') :<12}"
+                  f"{table_id:<10}"
+                  f"{order.get('total_amount') :<15}"
                   f"{order.get('order_status') :<15}"
                   f"{order.get('created_at') :<20}")
-            print("="*100)
-
+        print("."*105)
 
     def update_order(self):
         data = self.load_order()
@@ -252,16 +277,19 @@ class OrderManagement:
             print("Order not found")
             return
 
-        order_id = input("\nEnter Order ID to Update : ").strip().upper()
+        self.view_orders()
+        while True:
+            order_id = input("\nEnter Order ID to Update : ").strip().upper()
 
-        found_order = None
-        for order in orders:
-            if order.get("order_id") == order_id:
-                found_order  = order
-                break
-        if found_order is None:
-                print("\nOrder ID not found")
-                return
+            found_order = None
+            for order in orders:
+                if order.get("order_id") == order_id:
+                    found_order  = order
+                    break
+            if found_order is None:
+                    print("\nOrder ID not found")
+                    continue
+            break
         current_status = found_order.get("order_status")
 
         if current_status in ["completed","cancelled"]:
@@ -284,6 +312,7 @@ class OrderManagement:
             return
         else :
             print("Invalid Choice!..\n")
+            return
 
         found_order["order_status"] = new_status
         self.save_order(data)
@@ -297,8 +326,9 @@ class OrderManagement:
         if not orders:
             print("Order not found")
             return
+        self.view_orders()
 
-        order_id = input("Emter Order ID to cancel : ").strip().upper()
+        order_id = input("Enter Order ID to cancel : ").strip().upper()
 
         found_order = None
 
@@ -319,10 +349,10 @@ class OrderManagement:
             print("Order can't be cancelled it is already complete.")
             return
         if current_status == "served":
-            print("Order cant br cancelled it's already served.") 
+            print("Order can't be cancelled it's already served.") 
             return
 
-        confirm_cancel = input("Are you sure you want to cancel?(yes/no) ").strip()
+        confirm_cancel = input("Are you sure you want to cancel?(yes/no) ").strip().lower()
         if confirm_cancel != "yes":
             print("Can't be cancel")
             return

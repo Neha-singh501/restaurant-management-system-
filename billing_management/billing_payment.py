@@ -60,19 +60,24 @@ class BillManagement:
         while True:
             print("\n" + "=" * 30)
             print("          BILLING")
-            print("." * 30)
+            print("=" * 30)
             print("\n1. Generate Bill")
-            print("2. Back")
+            print("2. View Bill")
+            print("3. Update Bill")
+            print("4. Back")
 
             choice = input("Enter Choice : ").strip()
 
             if choice == "1":
                 self.generate_bill()
             elif choice == "2":
+                self.view_bill()
+            elif choice == "3":
+                pass
+            elif choice == "4":
                 return
             else:
                 print("Invalid Choice!...")
-
 
     def generate_bill(self):
 
@@ -82,8 +87,14 @@ class BillManagement:
         if not orders:
             print("\nOrder not found")
             return
+        
+        while True:
+            order_id = input("\nEnter Order ID : ").strip().upper()
 
-        order_id = input("\nEnter Order ID : ").strip().upper()
+            if not order_id:
+                print("Order ID can't be empty")
+            else:
+                break 
 
         found_order = None
 
@@ -99,98 +110,151 @@ class BillManagement:
         status = found_order.get("order_status")
 
         if status == "cancelled":
-            print("Cancelled order ka bill nahi ban sakta.")
+            print("Bill cannot be generated bcz the order has been cancelled..")
+            return
+        
+        if status != "served":
+            print("Bill can't be generate bcz the order hasn't been served yet.")
             return
 
-        if status not in ["served", "completed"]:
-            print(f"Bill abhi nahi ban sakta, order status : {status}")
-            return
-
-        # Step 3: pehle se bill to nahi bana
         bill_data = self.load_bill()
         bills = bill_data["bill"]
 
         for b in bills:
             if b.get("order_id") == order_id:
-                print(f"Is order ka bill pehle se ban chuka hai : {b.get('bill_id')}")
+                print(f"Bill already generated.: {b.get('bill_id')}")
                 return
 
-        # Step 4: hisaab
-        subtotal = found_order.get("total_amount")
-        gst = round(subtotal * 0.05, 2)       # 5% GST
-        grand_total = round(subtotal + gst, 2)
-
-        # Step 5: payment method
-        print("\n1. Cash")
-        print("2. UPI")
-        print("3. Card")
-
-        pay_choice = input("Select Payment Method : ").strip()
-
-        if pay_choice == "1":
-            payment_method = "cash"
-        elif pay_choice == "2":
-            payment_method = "upi"
-        elif pay_choice == "3":
-            payment_method = "card"
-        else:
-            print("Invalid Choice!...")
+        menu_items = found_order.get("menu_items",[])
+        if not menu_items:
+            print("\nCan't generate bill bcz no menu item were found.")
             return
 
-        # Step 6: bill save
-        new_bill = {
-            "bill_id": self.generate_bill_id(bills),
-            "order_id": order_id,
-            "customer_name": found_order.get("customer_name"),
-            "table_id": found_order.get("table_id"),
-            "subtotal": subtotal,
-            "gst": gst,
-            "grand_total": grand_total,
-            "payment_method": payment_method,
-            "payment_status": "paid",
-            "created_at": datetime.now().strftime("%Y-%m-%d %H:%M")
-        }
+        subtotal = 0
 
-        bills.append(new_bill)
+        for item in menu_items:
+            try:
+                item_subtotal = float(item.get("subtotal"))
+            except:
+                print("Invalid subtotal found in order")
+                return
+
+            if item_subtotal < 0:
+                print("\nInvalid subtotal found in order")
+                return
+
+            subtotal += item_subtotal 
+
+        while True:
+                try:
+                    discount_percent = float(input("\nEnter Discount : ").strip())
+                    if discount_percent < 0 :
+                        print("Discount Must be btwn 1 to 100 ")
+                        continue
+                    if discount_percent > 100:
+                        print("Discount must be btwn 1 to 100")
+                        continue
+                    break
+                except:
+                    print("Invalid Discount")
+                
+        discount = subtotal * discount_percent /100
+        after_discount = subtotal - discount
+
+        tax_percent = 5
+        tax = after_discount * tax_percent/100
+
+        grand_total = after_discount + tax
+
+
+        bill_id = self.generate_bill_id(bills)
+        bill = {
+                "bill_id" : bill_id,
+                "order_id" : order_id,
+                "booking_id" : found_order.get("booking_id"),
+                "customer_name" :found_order.get("customer_name"),
+                "table_id": found_order.get("table_id"),
+                "menu_items" : menu_items,
+                "subtotal": subtotal,
+                "discount_percent": discount_percent,
+                "discount" : discount,
+                "tax_percent" : tax_percent,
+                "tax" : tax,
+                "grand_total" : grand_total,
+                "payment_status" : "pending",
+                "created_at" : datetime.now().strftime("%Y-%m-%d %H:%M ")
+             }
+
+        bills.append(bill)
         self.save_bill(bill_data)
 
-        # Step 7: order ko completed karo
-        found_order["order_status"] = "completed"
-        self.save_order(order_data)
+        print("\nBill Generated Successfully")
 
-        # Step 8: print
-        self.print_bill(new_bill, found_order)
+        print("*"*50)
 
-    # ---------------- PRINT BILL ----------------
+        print(f"BILL ID : {bill_id}")
+        print(f"customer_name : {found_order.get("customer_name")}")
+        print(f"SubTotal : {subtotal:.2f}")
+        print(f"Discount : {discount:.2f}")
+        print(f"Tax ({tax_percent}%) : {tax:.2f}")
+        print(f"Grand Total : {grand_total:.2f}")
+        # print(f"Payment Status" : "pending")
 
-    def print_bill(self, bill, order):
 
-        print("\n" + "=" * 50)
-        print("                  RESTAURANT BILL")
-        print("=" * 50)
+    def view_bill(self):
+        bill_data = self.load_bill()
+        bills = bill_data.get("bill")
 
-        print(f"Bill ID  : {bill['bill_id']}")
-        print(f"Order ID : {bill['order_id']}")
-        print(f"Customer Name: {bill['customer_name']}")
-        print(f"Table No : {bill['table_id']}")
-        print(f"Date     : {bill['created_at']}")
+        if not bills:
+            print("No Bill Found")
+            return
+
+        bill_id = input("Enter Bill ID : ").strip()
+
+        found_bill = None
+
+        for bill in bills:
+            if bill.get("bill_id") == bill_id:
+                found_bill = bill
+                break
+        if found_bill is None:
+            print("Bill ID not Found")
+            return
+        table = found_bill.get("table_id")
+        if table is None:
+            table = "Takeaway"
+
+        print("\n" + "*" * 50)
+        print("                 DISPLAY BILL ")
+        print("*" * 50)
+
+        print(f"Bill ID   : {found_bill.get('bill_id')}")
+        print(f"Order ID  : {found_bill.get('order_id')}")
+        print(f"Customer  : {found_bill.get('customer_name')}")
+        print(f"Table     : {table}")
+        print(f"Date      : {found_bill.get('created_at')}")
 
         print("-" * 50)
-        print(f"{'Item':<22}{'Quantity':<6}{'Price':<10}{'Total':<10}")
+        print(f"{'Item':<22}{'Qty':<6}{'Price':<10}{'Subtotal':<10}")
         print("-" * 50)
 
-        for item in order["menu_items"]:
-            print(f"{item['food_name']:<22}{item['quantity']:<6}{item['price']:<10}{item['subtotal']:<10}")
+        for item in found_bill.get("menu_items", []):
+            print(f"{item.get('food_name'):<22}"
+                  f"{item.get('quantity'):<6}"
+                  f"{item.get('price'):<10}"
+                  f"{item.get('subtotal'):<10}")
 
         print("-" * 50)
-        print(f"{'Subtotal':<38}{bill['subtotal']:>10.2f}")
-        print(f"{'GST (5%)':<38}{bill['gst']:>10.2f}")
-        print(f"{'Grand Total':<38}{bill['grand_total']:>10.2f}")
-        print("-" * 50)
-        print(f"Payment : {bill['payment_method']} ({bill['payment_status']})")
-        print("=" * 50)
-        print("          Thank You! Visit Again")
-        print("=" * 50) 
+        print(f"SubTotal          : {found_bill.get('subtotal'):.2f}")
+        print(f"Discount ({found_bill.get('discount_percent')}%)     : {found_bill.get('discount'):.2f}")
+        print(f"Tax ({found_bill.get('tax_percent')}%)          : {found_bill.get('tax'):.2f}")
+        print(f"Grand Total       : {found_bill.get('grand_total'):.2f}")
+        print("*" * 50)
+
+
+    def cancel_bill(self):
+        pass
+
 
 
 

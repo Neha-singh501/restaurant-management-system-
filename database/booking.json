@@ -1,40 +1,5 @@
 {
     "booking": [
-        {
-            "booking_id": "BKG808D37",
-            "customer_name": "Nisha Singh",
-            "phone_no": "8907654356",
-            "table_id": "109",
-            "number_of_guests": 2,
-            "booking_type": "advance",
-            "booking_date": "2026-10-05",
-            "booking_time": "11:00",
-            "duration": 1.0,
-            "status": "booked"
-        },
-        {
-            "booking_id": "BKGAC2F30",
-            "customer_name": "Nidhi Singh",
-            "phone_no": "7890654323",
-            "table_id": "107",
-            "number_of_guests": 2,
-            "booking_type": "advance",
-            "booking_date": "2026-10-05",
-            "booking_time": "11:00",
-            "duration": 1.0,
-            "status": "booked"
-        },
-        {
-            "booking_id": "BKG7CCFD3",
-            "customer_name": "Nishu",
-            "phone_no": "9087656789",
-            "table_id": "109",
-            "number_of_guests": 1,
-            "booking_type": "walk-in",
-            "booking_date": "2026-10-04",
-            "booking_time": "15:17",
-            "duration": 1.0,
-            "status": "occupied"
-        }
+    
     ]
 }

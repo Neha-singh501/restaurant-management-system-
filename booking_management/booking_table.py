@@ -396,7 +396,7 @@ class BookingTable:
         print("                                          ***************** ALL BOOKING *********************")
         print("."*130)
 
-        print(f"{'Booking ID' : <15}"f"{'Customer Name' : <20}"f"{'Table ID' : <15}"f"{'Guests' : <10}"f"{'Booking Type' : <20}"f"{'Date' : <13}"f"{'Time' : <15}"f"{'Duration' : <15}"f"{'Status' : <15}")
+        print(f"{'Booking ID' :<15}"f"{'Customer Name' :<20}"f"{'Table ID' :<15}"f"{'Guests' :<10}"f"{'Booking Type' :<20}"f"{'Date' :<13}"f"{'Time' :<15}"f"{'Duration' :<15}"f"{'Status' :<15}")
 
         print("."*130)
 
@@ -423,7 +423,6 @@ class BookingTable:
                 f"{status :<15}")
 
         print("=" * 130)
-        print(f"Total Bookings : {len(bookings)}")
 
         return bookings
 
@@ -438,7 +437,7 @@ class BookingTable:
             print("Booking Not found")
             return
         
-       
+        self.view_booking()
         booking_id = input("\nEnter Booking ID to Cancel : ").strip().upper()
        
         for booking in bookings:

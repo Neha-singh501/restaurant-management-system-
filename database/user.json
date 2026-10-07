@@ -18,12 +18,39 @@
             "role": "staff"
         },
         {
-            "id": "STF7E99D3",
-            "full_Name": "Sakshi Kumari",
-            "username": "sakshi123",
-            "phone_no": "8907656785",
-            "email": "sakshikumari@gmail.com",
-            "password": "staff2007",
+            "id": "STF046950",
+            "full_Name": "Manisha Singh",
+            "username": "manisha123",
+            "phone_no": "9034562345",
+            "email": "manisha@gmail.com",
+            "password": "manisha@2207",
+            "role": "staff"
+        },
+        {
+            "id": "STFC8C78D",
+            "full_Name": "Nidhi Kumari",
+            "username": "nidhi001",
+            "phone_no": "8976123452",
+            "email": "nidhisingh@gmail.com",
+            "password": "staff123",
+            "role": "staff"
+        },
+        {
+            "id": "STF978F5B",
+            "full_Name": "Prity Singh",
+            "username": "prity456",
+            "phone_no": "8766732122",
+            "email": "prity@gmail.com",
+            "password": "staff005",
+            "role": "staff"
+        },
+        {
+            "id": "STF1B31A3",
+            "full_Name": "Nisha Singh",
+            "username": "nisha123",
+            "phone_no": "8906545632",
+            "email": "nisha@gmail.com",
+            "password": "nisha@2006",
             "role": "staff"
         }
     ]

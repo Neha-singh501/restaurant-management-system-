@@ -13,6 +13,24 @@ class Auth :
 
 
     
+    def sign_up_dash(self):
+        while True:
+            print("\n" + "*" * 30)
+            print("        ADMIN SIGN UP")
+            print("*" * 30)
+            print("1. SIGN UP")
+            print("2.EXIT")
+    
+            choice = input("Enter your choice : ").strip()
+            if choice == "1":
+                self.admin_sign_up()
+            elif choice == "2":
+                 return
+            else:
+                print("Invalid choice!...")
+                break
+    
+    
     def admin_sign_up(self):
         if self.count_admins() >= self.MAX_ADMINS:
             print(f"Admin limit reached. Only {self.MAX_ADMINS} admins are allowed.")
@@ -23,6 +41,7 @@ class Auth :
         print("\n" + "." * 30)
         print("        ADMIN SIGN UP")
         print("." * 30)
+       
         print(f"Admins registered: {self.count_admins()} of {self.MAX_ADMINS}")
 
         full_Name = get_fullname()
@@ -71,7 +90,9 @@ class Auth :
         except FileNotFoundError, json.JSONDecodeError :
             data = {"users" : []}
             return
+        
         user_found = False
+
         for user in data["users"]:
             if user["username"] == username and user["password"] ==password:
                 user_found = True 

@@ -10,9 +10,9 @@ file_path = os.path.join(BASE_DIR,"database","user.json")
 def register_staff():
 
     while True:
-        print("."*25)
-        print("    NEW STAFF REGISTER  ")
-        print("."*25)
+        print("*"*25)
+        print("     STAFF MANAGE  ")
+        print("*"*25)
         print("\n1. Add_New_Staff ")
         print("2. View Staff")
         print("3. Update Staff")
@@ -46,7 +46,7 @@ def new_staff():
         with open(file_path ,"r") as file:
             data = json.load(file)
     except FileNotFoundError , json.JSONDecodeError:
-        data = {"user" : []}
+        data = {"users" : []}
        
 
     staff_id = generate_staff_id(data["users"])
@@ -65,7 +65,7 @@ def new_staff():
             print("Email Already Taken ")
             return
 
-    new_staff = {
+    new_user = {
 
         "id" : staff_id,
         "full_Name" : full_Name,
@@ -73,22 +73,19 @@ def new_staff():
         "phone_no" : phone_no,
         "email" : email,
         "password" : password,
-        # "designation" : "",
         "role" : "staff"
     }
 
-    data["users"].append(new_staff)
+    data["users"].append(new_user)
 
     with open(file_path, "w") as file :
         json.dump(data,file, indent = 4)
 
 
     print("\nStaff Registered Successfully !\n")
-    print(f"Welcome , {full_Name}")
     print(f"Your Staff ID Is: {staff_id}")
     print(f"Role : staff")
     
-
 
 def view_staff():
     try :
@@ -124,7 +121,6 @@ def view_staff():
         )
         
         print("\n" + "-"*110)
-    print(f"Total Staff  :  {len(staff_list)}")
 
 
 def update_staff():
@@ -134,22 +130,25 @@ def update_staff():
     except (FileNotFoundError, json.JSONDecodeError):
         print("User file not found.")
         return
+    view_staff()
+    while True:
+        staff_id = input("Enter Staff ID to update : ").strip().upper()
 
-    staff_id = input("Enter Staff ID to update : ").strip().upper()
+        staff = None
+        for user in data["users"]:
+            if user.get("id") == staff_id :
+                staff = user
+                break
 
-    staff = None
-    for user in data["users"]:
-        if user.get("id") == staff_id :
-            staff = user
-            break
+        if staff is None:
+            print("Staff ID not found. Please Enter Valid Staff ID")
+            continue 
 
-    if staff is None:
-        print("Staff ID not found. Please Enter Valid Staff ID")
-        return
+        if staff.get("role") == "admin":
+            print("You can't update admin..")
+            return
 
-    if staff.get("role") == "admin":
-        print("You can't update admin..")
-        return
+        break
 
     print("\n" + "."*30)
     print("     UPDATE STAFF")
@@ -159,7 +158,6 @@ def update_staff():
     print("1. Full Name")
     print("2. Phone No.")
     print("3. Email")
-    # print("4. Designation")
     print("4. Back")
 
     choice = input("Enter Your Choice : ").strip()
@@ -177,13 +175,6 @@ def update_staff():
                 print("This Email is already registered with another user.")
                 return
         staff["email"] = new_email
-
-    # elif choice == "4":
-    #     designation = input("Enter New Designation: ").strip()
-    #     if not designation:
-    #         print("Designation Can't be empty.")
-    #         return
-    #     staff["designation"] = designation
 
     elif choice == "4":
         return
@@ -207,21 +198,26 @@ def delete_staff():
         print("User file not found .")
         return
 
-    staff_id = input("Enter Staff ID to Delete : ").strip().upper()
+    view_staff()
+    while True:
+        staff_id = input("Enter Staff ID to Delete : ").strip().upper()
 
-    staff = None
-    for user in data["users"]:
-        if user.get("id") == staff_id :
-            staff = user
-            break
+        staff = None
+        for user in data["users"]:
+            if user.get("id") == staff_id :
+                staff = user
+                break
 
-    if staff is None:
-        print("Staff ID not found. Enter Valid Staff ID")
-        return
+        if staff is None:
+            print("Staff ID not found. Enter Valid Staff ID")
+            continue
 
-    if staff.get("role") == "admin":
-        print("You can't delete admin...")
-        return
+        if staff.get("role") == "admin":
+            print("You can't delete admin...")
+            return
+
+        break
+    
 
     print("\n" + "." * 30)
     print("        DELETE STAFF")
@@ -229,7 +225,7 @@ def delete_staff():
     print(f'ID       : {staff.get("id")}')
     print(f'Name     : {staff.get("full_Name")}')
     print(f'Username : {staff.get("username")}')
-    print(f'Email       : {user.get("email")}')
+    print(f'Email       : {staff.get("email")}')
     print(f'Phone    : {staff.get("phone_no")}')
 
     confirm = input("\nConfirm deletion..(yes/no): ").strip().lower()

@@ -1,17 +1,66 @@
 {
     "bill": [
-     
         {
-            "bill_id": "BILL893E07",
-            "order_id": "ORD0269EE",
-            "customer_name": "Nishu",
-            "table_id": "109",
-            "subtotal": 190.0,
-            "gst": 9.5,
-            "grand_total": 199.5,
-            "payment_method": "cash",
-            "payment_status": "paid",
-            "created_at": "2026-10-05 07:39"
+            "bill_id": "BILL014078",
+            "order_id": "ORD86192E",
+            "booking_id": null,
+            "customer_name": "Nishu Singh",
+            "table_id": null,
+            "menu_items": [
+                {
+                    "item_id": 1,
+                    "food_name": "Paneer Tikka",
+                    "quantity": 2,
+                    "price": 110.0,
+                    "subtotal": 220.0
+                },
+                {
+                    "item_id": 6,
+                    "food_name": "Dal Makhani",
+                    "quantity": 1,
+                    "price": 120.0,
+                    "subtotal": 120.0
+                }
+            ],
+            "subtotal": 340.0,
+            "discount_percent": 10.0,
+            "discount": 34.0,
+            "tax_percent": 5,
+            "tax": 15.3,
+            "grand_total": 321.3,
+            "payment_status": "pending",
+            "created_at": "2026-10-07 13:14 "
+        },
+        {
+            "bill_id": "BILLE0B93F",
+            "order_id": "ORD7523AE",
+            "booking_id": null,
+            "customer_name": "Manisha Singh",
+            "table_id": null,
+            "menu_items": [
+                {
+                    "item_id": 12,
+                    "food_name": "Butter Naan",
+                    "quantity": 1,
+                    "price": 25.0,
+                    "subtotal": 25.0
+                },
+                {
+                    "item_id": 2,
+                    "food_name": "Veg Spring Roll",
+                    "quantity": 1,
+                    "price": 80.0,
+                    "subtotal": 80.0
+                }
+            ],
+            "subtotal": 105.0,
+            "discount_percent": 2.0,
+            "discount": 2.1,
+            "tax_percent": 5,
+            "tax": 5.145,
+            "grand_total": 108.045,
+            "payment_status": "pending",
+            "created_at": "2026-10-07 13:30 "
         }
     ]
 }
