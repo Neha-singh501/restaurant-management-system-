@@ -49,7 +49,7 @@ class BillManagement:
 
 
     def generate_bill_id(self, bills):
-        existing_ids = [b.get("bill_id") for b in bills]
+        existing_ids = [bill.get("bill_id") for bill in bills]
 
         while True:
             bill_id = "BILL" + uuid.uuid4().hex[:6].upper()
@@ -74,7 +74,7 @@ class BillManagement:
             elif choice == "2":
                 self.view_bill()
             elif choice == "3":
-                pass
+                self.process_payment()
             elif choice == "4":
                 return
             else:
@@ -121,9 +121,9 @@ class BillManagement:
         bill_data = self.load_bill()
         bills = bill_data["bill"]
 
-        for b in bills:
-            if b.get("order_id") == order_id:
-                print(f"Bill already generated.: {b.get('bill_id')}")
+        for bill in bills:
+            if bill.get("order_id") == order_id:
+                print(f"Bill already generated.: {bill.get('bill_id')}")
                 return
 
         menu_items = found_order.get("menu_items",[])
@@ -183,7 +183,7 @@ class BillManagement:
                 "tax" : tax,
                 "grand_total" : grand_total,
                 "payment_status" : "pending",
-                "created_at" : datetime.now().strftime("%Y-%m-%d %H:%M ")
+                "created_at" : datetime.now().strftime("%Y-%m-%d %H:%M")
              }
 
         bills.append(bill)
@@ -194,13 +194,12 @@ class BillManagement:
         print("*"*50)
         print("\n")
         print(f"BILL ID : {bill_id}")
-        print(f"customer_name : {found_order.get("customer_name")}")
+        print(f"customer_name : {found_order.get('customer_name')}")
         print(f"SubTotal : {subtotal:.2f}")
         print(f"Discount : {discount:.2f}")
         print(f"Tax ({tax_percent}%) : {tax:.2f}")
         print(f"Grand Total : {grand_total:.2f}")
-        # print(f"Payment Status" : "pending")
-
+        print("Payment Status : pending")
 
     def view_bill(self):
         bill_data = self.load_bill()
@@ -250,6 +249,8 @@ class BillManagement:
         print(f"Discount ({found_bill.get('discount_percent')}%)     : {found_bill.get('discount'):.2f}")
         print(f"Tax ({found_bill.get('tax_percent')}%)          : {found_bill.get('tax'):.2f}")
         print(f"Grand Total       : {found_bill.get('grand_total'):.2f}")
+        print(f"Payment : {found_bill.get('payment_status')}")
+        print(f"Method : {found_bill.get('payment_method')}")
         print("*" * 50)
 
 
@@ -312,6 +313,11 @@ class BillManagement:
 
         total = found_bill.get("grand_total")
         print(f"\nAmount to Pay : {total:.2f}")
+
+
+        amount_paid = total
+        change = 0
+        reference = "-"
         while True:
                     
             print("\n1. Cash")
@@ -321,18 +327,94 @@ class BillManagement:
             choice = input("Enter Your Choice : ").strip()
 
             if choice == "1":
-                method = "cash"
-                
+                method = "Cash"
+                while True:
+                    try:
+                        amount_paid = float(input("Enter Amount : ")).strip()
+                    except:
+                        print("\nplease enter number")
+                        continue
+                    if amount_paid <total :
+                        print("The minimum amount required is {total:.2f}")
+                        continue
+                    break
+                change = amount_paid - total
+                break
+
+            elif choice == "2":
+                method = "UPI"
+                while True:
+                    reference = input("Enter UPI ID : ").strip()
+                    if len(reference) >= 6:
+                        break
+                    print("\nUPI ID must be at least 6 character long..")
+
+            elif choice == "3":
+                method = "Card"
+                while True:
+                    reference = input("Enter Last 4 digit : ").strip()
+                    if reference.isdigit() and len(reference) ==4:
+                        break
+                    print("Invalid Number")
+                break
+
+            else:
+                print("\nInvalid Choice...")
+
+        payment_data = self.load_payment()
+        payments = payment_data["payment"]
+
+        now = datetime.now().strftime("%Y-%m-%d %H:%M" )
+        payment = {
+                "bill_id": found_bill.get("bill_id"),
+                "order_id" : found_bill.get("order_id"),
+                "payment_method" : method,
+                "reference" : reference,
+                "amount_due": total,
+                "amount_paid" : amount_paid,
+                "change" : change,
+                "paid_at" :now
+                }
+
+        payments.append(payment)
+        self.save_payment(payment_data)
+
+        found_bill["payment_status"] = "paid"
+        found_bill["payment_method"] = method
+        found_bill["paid_at"] = now
+
+        self.save_bill(bill_data)
 
 
-        
+        print("\n" + "*"*50)
+        print("         PAYMENT SUCCESSFUL")
+        print("*"*50)
+
+        print(f"Bill ID : {found_bill.get('bill_id')}")
+        print(f"Method : {method}")
+        print(f"Total : {total:.2f}")
+        if method == "Cash":
+            print(f"Paid : {amount_paid:.2f}")
+            print(f"Change : {change :.2f}")
+        else:
+            print(f"reference : {reference}")
+
+
+
+                        
+
+
 
 
 
             
 
-    
-    
+
+
+                
+
+        
+        
 
 
 

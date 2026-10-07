@@ -6,11 +6,11 @@ class Inventory_Manage:
 
     def __init__(self):
         self.inventory_file = "database/inventory.json"
-        self.reorder_level = 10   # quantity itni ya isse kam ho to Low Stock Alert
+        self.reorder_level = 10 
 
-    # ---------- File read / write ----------
+ 
     def load_inventory(self):
-        # file na ho ya khaali ho to empty list de do
+    
         if not os.path.exists(self.inventory_file):
             return []
         try:
@@ -24,31 +24,31 @@ class Inventory_Manage:
         with open(self.inventory_file, "w") as file:
             json.dump({"inventory": items}, file, indent=4)
 
-    # ---------- Input validation ----------
+ 
     def get_quantity(self, message):
-        # jab tak sahi quantity (> 0) na mile, dobara puchte raho
+    
         while True:
             qty = input(message)
             if qty.isdigit() and int(qty) > 0:
                 return int(qty)
-            print("Error: Invalid quantity (0 se bada number daalo)")
+            print("Invalid quantity ")
 
     def get_price(self):
         while True:
             price = input("Price: ")
             if price.replace(".", "", 1).isdigit() and float(price) > 0:
                 return float(price)
-            print("Error: Invalid price (0 se bada number daalo)")
+            print(" Invalid price ")
 
     def get_text(self, message):
-        # khaali nahi hona chahiye, sirf letters (space chalega)
+    
         while True:
             text = input(message).strip()
             if text.replace(" ", "").isalpha():
                 return text
-            print("Error: Sirf letters daalo, khaali nahi chhodna")
+            print("Enter only letter")
 
-    # ---------- Items ki list dikhana ----------
+   
     def show_items(self, items):
         print("\nID      | Name        | Category      | Quantity | Unit | Price")
         print("-------------------------------------------------------------")
@@ -57,7 +57,7 @@ class Inventory_Manage:
                   item["quantity"], "|", item["unit"], "|", item["price"])
 
     def select_item(self, items):
-        # list dikhao, ID lo, item dhoondho (nahi mila to None)
+      
         if len(items) == 0:
             print("Inventory khaali hai")
             return None
