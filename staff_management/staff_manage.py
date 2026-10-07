@@ -58,7 +58,7 @@ def new_staff():
     
     
     for user in data["users"] :
-        if user.get("username") == username:
+        if user.get("email") == email:
             print("Username Already Registered")
             return
         if user.get("email") == email:
@@ -131,6 +131,7 @@ def update_staff():
         print("User file not found.")
         return
     view_staff()
+    
     while True:
         staff_id = input("Enter Staff ID to update : ").strip().upper()
 
@@ -142,7 +143,7 @@ def update_staff():
 
         if staff is None:
             print("Staff ID not found. Please Enter Valid Staff ID")
-            continue 
+            return 
 
         if staff.get("role") == "admin":
             print("You can't update admin..")
@@ -210,7 +211,7 @@ def delete_staff():
 
         if staff is None:
             print("Staff ID not found. Enter Valid Staff ID")
-            continue
+            return
 
         if staff.get("role") == "admin":
             print("You can't delete admin...")
@@ -218,7 +219,6 @@ def delete_staff():
 
         break
     
-
     print("\n" + "." * 30)
     print("        DELETE STAFF")
     print("." * 30)

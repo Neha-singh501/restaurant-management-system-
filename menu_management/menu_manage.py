@@ -123,24 +123,24 @@ class Menu_manage:
             print("\nMenu is empty.")
             return []
 
-        print("\n" + "-" * 100)
-        print("                           MENU")
-        print("-" * 100)
+        
+        print("                 ********************** ITEM'S VIEW *********************                    ")
+        print("                               .............................                                ")
 
         print(f"{'ID':<10}{'Name':<25}{'Category':<25}{'half_price':<20}{'full_price':<20}{'Available':<10}")
 
-        print("-" * 90)
+        print("*" * 110)
         for item in items:
             status = "Yes" if item["availability"] else "No"
             print(
                 f"{item['item_id']:<10}"
                 f"{item['food_name']:<25}"
                 f"{item['category']:<25}"
-                f"{float(item['half_price']):<20f}"
-                f"{float(item['full_price']):<20f}"
+                f"{float(item['half_price']):<20.2f}"
+                f"{float(item['full_price']):<20.2f}"
                 f"{status:<20}"
             )
-        print("-" * 100)
+        print("-" * 110)
         return items
 
 

@@ -2,7 +2,7 @@
 import json
 import os
 import uuid
-from validation.validate import get_fullname,get_username , get_password , get_email 
+from validation.validate import get_fullname,get_username , get_password , get_email , get_phone_no
 from dashboard.dashboards import Dashboard
 
 class Auth :
@@ -11,58 +11,56 @@ class Auth :
         BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         self.file_path = os.path.join(BASE_DIR,"database","user.json")
 
+   
+    def load_users(self):
+        try:
+             with open(self.file_path, "r") as file:
+                  return json.load(file)
+        except:
+             return{"user" : []}
 
-    
-    def sign_up_dash(self):
-        while True:
-            print("\n" + "*" * 30)
-            print("        ADMIN SIGN UP")
-            print("*" * 30)
-            print("1. SIGN UP")
-            print("2.EXIT")
-    
-            choice = input("Enter your choice : ").strip()
-            if choice == "1":
-                self.admin_sign_up()
-            elif choice == "2":
-                 return
-            else:
-                print("Invalid choice!...")
-                break
-    
-    
+    def admin_exist(self):
+
+        data = self.load_users()
+        for user in data["users"]:
+            if user.get("role") == "admin":
+                return True
+        return False
+        
     def admin_sign_up(self):
-        if self.count_admins() >= self.MAX_ADMINS:
-            print(f"Admin limit reached. Only {self.MAX_ADMINS} admins are allowed.")
-            return
 
         data = self.load_users()
 
-        print("\n" + "." * 30)
-        print("        ADMIN SIGN UP")
-        print("." * 30)
-       
-        print(f"Admins registered: {self.count_admins()} of {self.MAX_ADMINS}")
+        for user in data["users"]:
+            if user.get("role") == "admin":
+                print("\nAdmin already register...")
+                return
 
-        full_Name = get_fullname()
+        print("*"*45)
+        print("         ADMIN SETUP")
+        print("*"*45)
+
+        full_name = get_fullname()
         username = get_username()
         email = get_email()
+        phone_no = get_phone_no()
         password = get_password()
 
         for user in data["users"]:
-            if user.get("username") == username:
-                print("Username already registered.")
-                return
-            if user.get("email") == email:
-                print("Email already registered.")
-                return
+             if user.get["username"]== username :
+                  print("Username already Taken")
+                  return
+             if user.get["email"] == email:
+                  print("Email Already create")
+                  return
 
         admin_id = "ADM" + uuid.uuid4().hex[:6].upper()
 
         new_admin = {
             "id": admin_id,
-            "full_Name": full_Name,
+            "full_name": full_name,
             "username": username,
+            "phone_no": phone_no,
             "role": "admin",
             "email": email,
             "password": password
@@ -70,17 +68,16 @@ class Auth :
 
         data["users"].append(new_admin)
 
-        json_text = json.dumps(data, indent=4)
         with open(self.file_path, "w") as file:
-            file.write(json_text)
+           json.dump(data,file,indent =4)
 
         print("\nAdmin registered successfully!")
         print(f"Admin ID : {admin_id}")
-        pass
+    
   
     def sign_in(self , selected_role):
         
-        username = get_username()
+        email = get_email()
         password = get_password()
 
         try : 
@@ -94,7 +91,7 @@ class Auth :
         user_found = False
 
         for user in data["users"]:
-            if user["username"] == username and user["password"] ==password:
+            if user["email"] == email and user["password"] ==password:
                 user_found = True 
                 role = user.get("role")
                 if role != selected_role:
@@ -106,13 +103,17 @@ class Auth :
                     print("                 Please select the correct role and try again.")
                     return
                 print("\nLogin Successful!....")
+
                 if role == "staff":
                     print(f"Staff ID :  {user.get('id')}")
                     print(f"Staff Name :  {user.get('full_Name')}")
+
                 dash_obj = Dashboard()
+
                 if role == "admin":
                         dash_obj.admin_dashboard()
                         return
+                
                 elif role == "staff":
                         dash_obj.staff_dashboard()
                         return

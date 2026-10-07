@@ -1,9 +1,31 @@
 
 from user_authentication.auth import Auth
 
-def main():
-    auth = Auth()
+auth = Auth()
 
+def register_admin():
+    while True:
+        print("*"*45)
+        print("     ADMIN INITIAL SETUP")
+        print("*"*45)
+        print("\n 1. SIGN UP")
+        print("2. EXIT")
+
+        choice = input("Enter Your Choice : ")
+
+        if choice == "1":
+            auth.admin_sign_up()
+           
+        elif choice == "2":
+            return
+        else :
+            print("Invalid Choice !...")
+
+def main():
+
+    if not auth.admin_exist():
+        register_admin()
+        
     while True:
         print("*" * 45)
         print("     RESTAURANT MANAGEMENT SYSTEM ")

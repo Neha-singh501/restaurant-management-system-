@@ -83,8 +83,8 @@ class Dashboard:
                 ord.order_menu()
        
             elif choice == "4":
-                # bil = BillManagement()
-                # bil.billing_menu()
+                bil = BillManagement()
+                bil.billing_menu()
                 pass
 
             elif choice == "5":

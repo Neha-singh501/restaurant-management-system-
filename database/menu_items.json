@@ -183,6 +183,46 @@
             "half_price": 50.0,
             "full_price": 100.0,
             "availability": true
+        },
+        {
+            "item_id": 34,
+            "food_name": "Tea",
+            "category": "Bevrage",
+            "half_price": 20.0,
+            "full_price": 40.0,
+            "availability": true
+        },
+        {
+            "item_id": 35,
+            "food_name": "Coffee",
+            "category": "Beverage",
+            "half_price": 70.0,
+            "full_price": 140.0,
+            "availability": true
+        },
+        {
+            "item_id": 36,
+            "food_name": "Masala Tea",
+            "category": "Beverage",
+            "half_price": 25.0,
+            "full_price": 50.0,
+            "availability": true
+        },
+        {
+            "item_id": 37,
+            "food_name": "Orange Juice",
+            "category": "Juice",
+            "half_price": 60.0,
+            "full_price": 120.0,
+            "availability": true
+        },
+        {
+            "item_id": 38,
+            "food_name": "Lemonado",
+            "category": "Juice",
+            "half_price": 40.0,
+            "full_price": 80.0,
+            "availability": true
         }
     ]
 }

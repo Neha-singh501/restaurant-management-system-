@@ -12,6 +12,7 @@ class BillManagement:
         BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         self.bill_path = os.path.join(BASE_DIR, "database", "bill.json")
         self.order_path = os.path.join(BASE_DIR, "database", "orders.json")
+        self.payment_path = os.path.join(BASE_DIR,"database","payment.json")
 
 
     def load_bill(self):
@@ -63,7 +64,7 @@ class BillManagement:
             print("=" * 30)
             print("\n1. Generate Bill")
             print("2. View Bill")
-            print("3. Update Bill")
+            print("3. process payment")
             print("4. Back")
 
             choice = input("Enter Choice : ").strip()
@@ -191,7 +192,7 @@ class BillManagement:
         print("\nBill Generated Successfully")
 
         print("*"*50)
-
+        print("\n")
         print(f"BILL ID : {bill_id}")
         print(f"customer_name : {found_order.get("customer_name")}")
         print(f"SubTotal : {subtotal:.2f}")
@@ -252,8 +253,86 @@ class BillManagement:
         print("*" * 50)
 
 
-    def cancel_bill(self):
-        pass
+    def load_payment(self):
+        try:
+            with open(self.payment_path,"r") as file:
+                data = json.load(file)
+        except:
+            return{"payment" : []}
+        if "payment" not in data:
+            data["payment"] =[]
+
+        return data
+
+    def save_payment(self,data):
+            with open(self.payment_path,"w") as file:
+                json.dump(data,file,indent = 4)
+
+    def process_payment(self):
+
+        bill_data = self.load_bill()
+        bills = bill_data["bill"]
+
+        if not bills:
+            print("\nNo Bill Found")
+            return
+        
+        pending_bill = []
+
+        for bill in bills:
+            if bill.get("payment_status") =="pending":
+                pending_bill.append(bill)
+
+        if not pending_bill:
+            print("There are currently no pending bills.")
+            return
+
+        print("\n------ Pending Bills------\n")
+        print(f"{'Bill_id':<12}{'customer_name' :<20}{'subtotal':<10}")
+        print("-"*50)
+
+        for bill in pending_bill:
+            print(f"{bill.get('bill_id'):<12}"
+                  f"{bill.get('customer_name') :<20}"
+                  f"{bill.get('grand_total') :<10.2f}")
+
+        found_bill = None
+
+        while True:
+            bill_id = input("Enter Bill ID : ").strip().upper()
+
+            for bill in pending_bill:
+                if bill.get("bill_id") == bill_id:
+                    found_bill = bill
+                    break
+
+            if not found_bill:
+                break
+            print("\nInvalid Bill ID ")
+
+        total = found_bill.get("grand_total")
+        print(f"\nAmount to Pay : {total:.2f}")
+        while True:
+                    
+            print("\n1. Cash")
+            print("2. UPI")
+            print("3. Card")
+
+            choice = input("Enter Your Choice : ").strip()
+
+            if choice == "1":
+                method = "cash"
+                
+
+
+        
+
+
+
+            
+
+    
+    
 
 
 
