@@ -1,0 +1,21 @@
+{
+    "users": [
+        {
+            "id": "ADM8720CB",
+            "full_name": "Neha Singh",
+            "username": "neha001",
+            "role": "admin",
+            "email": "neha@gmail.com",
+            "password": "admin123"
+        },
+        {
+            "id": "STF46A595",
+            "full_Name": "Nisha Singh",
+            "username": "nisha123",
+            "phone_no": "6744368907",
+            "email": "nisha@gmail.com",
+            "password": "nisha@2007",
+            "role": "staff"
+        }
+    ]
+}

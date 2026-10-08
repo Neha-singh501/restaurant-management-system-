@@ -1,0 +1,16 @@
+{
+    "booking": [
+        {
+            "booking_id": "BKG1F7E35",
+            "customer_name": "Prity Singh",
+            "phone_no": "8734552345",
+            "table_id": "107",
+            "number_of_guests": 2,
+            "booking_type": "advance",
+            "booking_date": "2026-10-08",
+            "booking_time": "11:00",
+            "duration": 1.0,
+            "status": "booked"
+        }
+    ]
+}
