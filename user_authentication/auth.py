@@ -116,7 +116,7 @@ class Auth :
                     print("                 You are not authorized to access this dashboard.")
                     print("                 Please select the correct role and try again.")
                     return
-                print(log_info("\nLogin Successful!...."))
+                print("\nLogin Successful!....")
 
                 if role == "staff":
                     print(f"Staff ID :  {user.get('id')}")

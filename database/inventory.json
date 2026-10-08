@@ -7,6 +7,14 @@
             "quantity": 4,
             "unit": "kg",
             "price": 300.0
+        },
+        {
+            "id": "FD002",
+            "name": "jjh",
+            "category": "sfdsfdfs",
+            "quantity": 7,
+            "unit": "kg",
+            "price": 100.0
         }
     ]
 }

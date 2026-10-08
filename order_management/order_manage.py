@@ -97,14 +97,19 @@ class OrderManagement:
                 log_info("User selected create new order")
                 self.create_order()
             elif choice == "2":
+              log_info("User selected view all order")
               self.view_orders()
             elif choice == "3":
+                log_info("user selected update order")
                 self.update_order()
             elif choice == "4":
+                log_info("User selected cancel order")
                 self.cancel_order()
             elif choice == "5":
+                log_info("User selected back from order management")
                 return
             else:
+                log_warning("Invalid Choice in order Management")
                 print("Invalid Choice!...")
 
     def create_order(self):
@@ -123,6 +128,7 @@ class OrderManagement:
                 bookings = booking_data["booking"]
 
                 if not bookings:
+                    log_warning("Booking Table not found")
                     print("\n Booking Not Found.")
                     return
 
@@ -135,6 +141,7 @@ class OrderManagement:
                         found_booking = booking
                         break
                 if found_booking is None:
+                    log_warning("Booking id not found")
                     print("\nBooking ID not Found.")
                     return
     #status check
@@ -157,6 +164,7 @@ class OrderManagement:
             menu = self.load_menu()
 
             if not menu :
+                log_warning("Order created failed : menu is empty")
                 print("\n Menu is not available.")
                 return
 
@@ -181,23 +189,28 @@ class OrderManagement:
                 selected_item = None
                 for item in menu:
                     if item.get("item_id") == item_id:
+                        log_info("Menu item found")
                         selected_item = item
                         break
                 if selected_item is None :
+                    log_warning("Invalid Item ID entered")
                     print("Invalid Item ID")
                     continue
 
                 if not selected_item.get("availability"):
+                    log_warning("Item not available")
                     print("This Item is not available")
                     continue
                 try:
                     
                     quantity = int(input("Enter Quantity : ").strip())
                 except:
+                    log_warning("Invalid Quantity")
                     print("Enter Number")
                     continue
 
                 if quantity <=0:
+                    log_warning("Invalid Quantity : less then 1")
                     print("Quantity must be 1")
                     continue
 
@@ -211,6 +224,7 @@ class OrderManagement:
                 elif choice == "2":
                     price = float(selected_item.get("full_price"))
                 else:
+                    log_warning("Invalid Choice for size")
                     print("Invalid Choice")
                     return
 
@@ -245,7 +259,9 @@ class OrderManagement:
                 "created_at": datetime.now().strftime("%Y-%m-%d %H:%M")
             }
 
+            log_info("New Order Add")
             orders.append(new_order)
+            log_info("New Order Save ")
             self.save_order(order_data)
 
 
@@ -295,7 +311,7 @@ class OrderManagement:
         data = self.load_order()
         orders = data["order"]
         if not orders:
-            log_warning("Order Not found")
+            log_warning("Order Not found to update")
             print("Order not found")
             return
         
@@ -304,14 +320,17 @@ class OrderManagement:
         while True:
             order_id = input("\nEnter Order ID to Update : ").strip().upper()
             if order_id == "0":
+                log_info("back to order menu ")
                 return
 
             found_order = None
             for order in orders:
                 if order.get("order_id") == order_id:
+                    log_info("order ID found to update")
                     found_order  = order
                     break
             if found_order is None:
+                    log_warning("Order ID not found to update")
                     print("\nOrder ID not found")
                     continue
             break
@@ -348,8 +367,10 @@ class OrderManagement:
 
         data = self.load_order()
         orders = data["order"]
+        
         if not orders:
             print("Order not found")
+            log_warning("Order ID not found to cancel")
             return
         self.view_orders()
         while True:

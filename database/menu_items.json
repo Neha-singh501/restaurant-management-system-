@@ -1,7 +1,7 @@
 {
     "menu_item": [
         {
-            "item_id": 1,
+            "item_id": "FD001",
             "food_name": "Paneer Tikka",
             "category": "Starters",
             "half_price": 110.0,
@@ -9,7 +9,7 @@
             "availability": true
         },
         {
-            "item_id": 2,
+            "item_id": "FD002",
             "food_name": "Veg Spring Roll",
             "category": "Starters",
             "half_price": 80.0,
@@ -17,7 +17,7 @@
             "availability": true
         },
         {
-            "item_id": 3,
+            "item_id": "FD003",
             "food_name": "Hara Bhara Kabab",
             "category": "Starters",
             "half_price": 80.0,
@@ -25,7 +25,7 @@
             "availability": true
         },
         {
-            "item_id": 4,
+            "item_id": "FD004",
             "food_name": "Chilli Paneer",
             "category": "Starters",
             "half_price": 120.0,
@@ -33,7 +33,7 @@
             "availability": true
         },
         {
-            "item_id": 5,
+            "item_id": "FD005",
             "food_name": "Paneer Butter Masala",
             "category": "Main Course",
             "half_price": 140.0,
@@ -41,7 +41,7 @@
             "availability": true
         },
         {
-            "item_id": 6,
+            "item_id": "FD006",
             "food_name": "Dal Makhani",
             "category": "Main Course",
             "half_price": 120.0,
@@ -49,7 +49,7 @@
             "availability": true
         },
         {
-            "item_id": 7,
+            "item_id": "FD007",
             "food_name": "Kadai Paneer",
             "category": "Main Course",
             "half_price": 135.0,
@@ -57,7 +57,7 @@
             "availability": true
         },
         {
-            "item_id": 9,
+            "item_id": "FD008",
             "food_name": "Chole Masala",
             "category": "Main Course",
             "half_price": 95.0,
@@ -65,7 +65,7 @@
             "availability": true
         },
         {
-            "item_id": 10,
+            "item_id": "FD009",
             "food_name": "Dal Tadka",
             "category": "Main Course",
             "half_price": 85.0,
@@ -73,7 +73,7 @@
             "availability": true
         },
         {
-            "item_id": 11,
+            "item_id": "FD010",
             "food_name": "Butter Roti",
             "category": "Breads",
             "half_price": 125.0,
@@ -81,7 +81,7 @@
             "availability": true
         },
         {
-            "item_id": 12,
+            "item_id": "FD011",
             "food_name": "Butter Naan",
             "category": "Breads",
             "half_price": 25.0,
@@ -89,7 +89,7 @@
             "availability": true
         },
         {
-            "item_id": 13,
+            "item_id": "FD012",
             "food_name": "Garlic Naan",
             "category": "Breads",
             "half_price": 50,
@@ -97,7 +97,7 @@
             "availability": true
         },
         {
-            "item_id": 15,
+            "item_id": "FD013",
             "food_name": "Steamed Rice",
             "category": "Rice",
             "half_price": 60.0,
@@ -105,7 +105,7 @@
             "availability": true
         },
         {
-            "item_id": 16,
+            "item_id": "FD014",
             "food_name": "Jeera Rice",
             "category": "Rice",
             "half_price": 70.0,
@@ -113,7 +113,7 @@
             "availability": true
         },
         {
-            "item_id": 23,
+            "item_id": "FD015",
             "food_name": "Veg Manchurian",
             "category": "Chinese",
             "half_price": 95.0,
@@ -121,7 +121,7 @@
             "availability": true
         },
         {
-            "item_id": 24,
+            "item_id": "FD016",
             "food_name": "Margherita Pizza",
             "category": "Fast Food",
             "half_price": 125.0,
@@ -129,7 +129,7 @@
             "availability": true
         },
         {
-            "item_id": 25,
+            "item_id": "FD017",
             "food_name": "Veg Burger",
             "category": "Fast Food",
             "half_price": 60.0,
@@ -137,7 +137,7 @@
             "availability": true
         },
         {
-            "item_id": 27,
+            "item_id": "FD018",
             "food_name": "White Sauce Pasta",
             "category": "Fast Food",
             "half_price": 105.0,
@@ -145,7 +145,7 @@
             "availability": true
         },
         {
-            "item_id": 28,
+            "item_id": "FD019",
             "food_name": "Gulab Jamun",
             "category": "Desserts",
             "half_price": 35.0,
@@ -153,7 +153,7 @@
             "availability": true
         },
         {
-            "item_id": 29,
+            "item_id": "FD020",
             "food_name": "Brownie with Ice Cream",
             "category": "Desserts",
             "half_price": 80.0,
@@ -161,7 +161,7 @@
             "availability": true
         },
         {
-            "item_id": 31,
+            "item_id": "FD021",
             "food_name": "Masala Chai",
             "category": "Beverages",
             "half_price": 30.0,
@@ -169,7 +169,7 @@
             "availability": true
         },
         {
-            "item_id": 32,
+            "item_id": "FD022",
             "food_name": "Cold Coffee",
             "category": "Beverages",
             "half_price": 60.0,
@@ -177,7 +177,7 @@
             "availability": true
         },
         {
-            "item_id": 33,
+            "item_id": "FD023",
             "food_name": "Chapati",
             "category": "Main Course",
             "half_price": 50.0,
@@ -185,7 +185,7 @@
             "availability": true
         },
         {
-            "item_id": 34,
+            "item_id": "FD024",
             "food_name": "Tea",
             "category": "Bevrage",
             "half_price": 20.0,
@@ -193,7 +193,7 @@
             "availability": true
         },
         {
-            "item_id": 35,
+            "item_id": "FD025",
             "food_name": "Coffee",
             "category": "Beverage",
             "half_price": 70.0,
@@ -201,7 +201,7 @@
             "availability": true
         },
         {
-            "item_id": 36,
+            "item_id": "FD026",
             "food_name": "Masala Tea",
             "category": "Beverage",
             "half_price": 25.0,
@@ -209,7 +209,7 @@
             "availability": true
         },
         {
-            "item_id": 37,
+            "item_id": "FD027",
             "food_name": "Orange Juice",
             "category": "Juice",
             "half_price": 60.0,
@@ -217,8 +217,16 @@
             "availability": true
         },
         {
-            "item_id": 38,
+            "item_id": "FD028",
             "food_name": "Lemonado",
+            "category": "Juice",
+            "half_price": 40.0,
+            "full_price": 80.0,
+            "availability": true
+        },
+        {
+            "item_id": "FD029",
+            "food_name": "Mango Juice",
             "category": "Juice",
             "half_price": 40.0,
             "full_price": 80.0,

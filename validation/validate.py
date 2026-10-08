@@ -180,6 +180,29 @@ def get_price():
             log_warning("Price Validation Failed : invalid number")
             print("Please Enter valid number")
 
+def get_full_price():
+
+    while True:
+        price = input("Enter Full Price : ")
+
+        if not price :
+            log_warning("Price Validation Falied : Entered Empty")
+            print("Price can't be empty")
+            continue
+
+        try :
+            price = float(price)
+
+            if price <=0:
+                log_warning("Price validation Failed : less then 0 entered")
+                print("Price must be greater then Zero")
+                continue
+
+            return price
+
+        except ValueError:
+            log_warning("Price Validation Failed : invalid number")
+            print("Please Enter valid number")
 #====================================
 #       Booking
 #======================================

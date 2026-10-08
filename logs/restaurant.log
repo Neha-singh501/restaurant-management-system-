@@ -68,3 +68,104 @@ Login Successful!....
 2026-10-08 11:43:35,931 - INFO - Admin Returned From Dashboard
 2026-10-08 11:43:37,566 - INFO - user returned from role menu
 2026-10-08 11:43:38,628 - INFO - Program exited
+2026-10-08 12:10:32,934 - INFO - Program Start
+2026-10-08 12:10:32,935 - INFO - User Data load Successfully
+2026-10-08 12:10:32,935 - INFO - Admin already exist
+2026-10-08 12:10:34,147 - INFO - User selected sign up
+2026-10-08 12:10:34,817 - INFO - Admin sign in selected
+2026-10-08 12:10:34,817 - INFO - Admin Sign in process Started
+2026-10-08 12:10:44,342 - WARNING - Email validation failed : email address wrong
+2026-10-08 12:10:54,155 - INFO - Email Validation Successful
+2026-10-08 12:10:57,500 - INFO - 
+Login Successful!....
+2026-10-08 12:10:57,500 - INFO - Admin Dashboard opened
+2026-10-08 12:11:12,939 - INFO - Admin Selected Staff management
+2026-10-08 12:11:14,362 - INFO - Admin selected View staff
+2026-10-08 12:11:14,362 - INFO - Complete View Staff
+2026-10-08 12:11:20,469 - INFO - Admin selected Add new staff
+2026-10-08 12:12:18,468 - INFO - Full name validation successful
+2026-10-08 12:12:22,694 - INFO - Username validation successful
+2026-10-08 12:12:31,331 - INFO - Email Validation Successful
+2026-10-08 12:13:15,498 - INFO - Phone no validation successful
+2026-10-08 12:13:23,380 - INFO - Staff Register Successful
+2026-10-08 12:13:23,381 - INFO - Completed Add staff
+2026-10-08 12:13:25,984 - INFO - Admin selected View staff
+2026-10-08 12:13:25,999 - INFO - Complete View Staff
+2026-10-08 12:13:30,147 - INFO - Admin Select to back from dashbord
+2026-10-08 12:13:30,147 - INFO - Staff Management Complete
+2026-10-08 12:13:31,485 - INFO - Admin Selecter Menu Management
+2026-10-08 12:13:38,034 - INFO - Menu Management Completed
+2026-10-08 12:13:40,318 - INFO - Admin Selected Inventory Management
+2026-10-08 12:14:17,514 - INFO - Inventory management Complete
+2026-10-08 12:14:20,260 - INFO - Admin Selected Booking Management
+2026-10-08 12:14:22,999 - INFO - Booking Management Complete
+2026-10-08 12:14:25,749 - INFO - Admin Selected order management
+2026-10-08 12:14:29,692 - INFO - User selected view all order
+2026-10-08 12:14:29,692 - INFO - Loading order data
+2026-10-08 12:14:29,692 - INFO - Order Data loaded successfully
+2026-10-08 12:14:31,811 - INFO - User selected back from order management
+2026-10-08 12:14:31,811 - INFO - Order Management Complete
+2026-10-08 12:14:35,542 - INFO - Admin Selected Bill Management 
+2026-10-08 12:14:43,321 - INFO - Loading order data
+2026-10-08 12:14:43,322 - INFO - Order Data loaded successfully
+2026-10-08 12:14:51,937 - INFO - Bill management Complete
+2026-10-08 12:14:55,058 - INFO - Admin Returned From Dashboard
+2026-10-08 12:14:57,131 - INFO - user returned from role menu
+2026-10-08 12:14:58,526 - INFO - Program exited
+2026-10-08 12:15:20,158 - INFO - Program Start
+2026-10-08 12:15:20,159 - INFO - User Data load Successfully
+2026-10-08 12:15:20,159 - INFO - Admin already exist
+2026-10-08 12:15:21,525 - INFO - User selected sign up
+2026-10-08 12:15:22,511 - INFO - Admin sign in selected
+2026-10-08 12:15:22,511 - INFO - Admin Sign in process Started
+2026-10-08 12:15:29,305 - INFO - Email Validation Successful
+2026-10-08 12:15:33,083 - INFO - 
+Login Successful!....
+2026-10-08 12:15:33,083 - INFO - Admin Dashboard opened
+2026-10-08 12:16:52,181 - INFO - Admin Returned From Dashboard
+2026-10-08 12:16:53,430 - INFO - user returned from role menu
+2026-10-08 12:16:54,466 - INFO - Program exited
+2026-10-08 12:56:36,880 - INFO - Program Start
+2026-10-08 12:56:36,881 - INFO - User Data load Successfully
+2026-10-08 12:56:36,881 - INFO - Admin already exist
+2026-10-08 12:56:39,717 - INFO - User selected sign up
+2026-10-08 12:56:40,748 - INFO - Admin sign in selected
+2026-10-08 12:56:40,749 - INFO - Admin Sign in process Started
+2026-10-08 12:56:48,467 - INFO - Email Validation Successful
+2026-10-08 12:56:51,855 - INFO - Admin Dashboard opened
+2026-10-08 12:56:54,324 - INFO - Admin Selected Inventory Management
+2026-10-08 13:04:18,418 - INFO - Inventory management Complete
+2026-10-08 13:04:20,961 - INFO - Admin Selecter Menu Management
+2026-10-08 13:04:47,953 - INFO - Menu Management Completed
+2026-10-08 13:04:50,156 - INFO - Admin Returned From Dashboard
+2026-10-08 13:04:51,965 - INFO - user returned from role menu
+2026-10-08 13:04:53,225 - INFO - Program exited
+2026-10-08 13:24:05,200 - INFO - Program Start
+2026-10-08 13:24:05,201 - INFO - User Data load Successfully
+2026-10-08 13:24:05,201 - INFO - Admin already exist
+2026-10-08 13:24:06,280 - INFO - User selected sign up
+2026-10-08 13:24:07,338 - INFO - Admin sign in selected
+2026-10-08 13:24:07,338 - INFO - Admin Sign in process Started
+2026-10-08 13:24:13,738 - INFO - Email Validation Successful
+2026-10-08 13:24:16,606 - INFO - Admin Dashboard opened
+2026-10-08 13:24:18,049 - INFO - Admin Selecter Menu Management
+2026-10-08 13:24:41,144 - INFO - Food Name validation successful
+2026-10-08 13:25:38,788 - INFO - Food Name validation successful
+2026-10-08 13:25:51,450 - INFO - Category Validation Successful
+2026-10-08 13:26:06,370 - INFO - Menu Management Completed
+2026-10-08 13:26:08,662 - INFO - Admin Returned From Dashboard
+2026-10-08 13:26:10,627 - INFO - user returned from role menu
+2026-10-08 13:26:16,091 - INFO - Program exited
+2026-10-08 13:30:11,246 - INFO - Program Start
+2026-10-08 13:30:11,246 - INFO - User Data load Successfully
+2026-10-08 13:30:11,246 - INFO - Admin already exist
+2026-10-08 13:30:12,484 - INFO - User selected sign up
+2026-10-08 13:30:13,625 - INFO - Admin sign in selected
+2026-10-08 13:30:13,625 - INFO - Admin Sign in process Started
+2026-10-08 13:30:20,053 - INFO - Email Validation Successful
+2026-10-08 13:30:23,098 - INFO - Admin Dashboard opened
+2026-10-08 13:30:34,717 - INFO - Admin Selected Booking Management
+2026-10-08 13:30:47,651 - INFO - Booking Management Complete
+2026-10-08 13:30:49,512 - INFO - Admin Returned From Dashboard
+2026-10-08 13:30:51,281 - INFO - user returned from role menu
+2026-10-08 13:30:52,330 - INFO - Program exited

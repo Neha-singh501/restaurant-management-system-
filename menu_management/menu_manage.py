@@ -30,9 +30,13 @@ class Menu_manage:
     def next_id(self, data):
         items = data["menu_item"]
         if not items:
-            return 1
-        return max(item["item_id"] for item in items) + 1
+            return "FD001"
+        last_id = max(
+        int(item["item_id"][2:])
+        for item in items)
 
+        return "FD" + str(last_id + 1).zfill(3)
+        
     #  DISPLAY MENU
 
     def display_menu(self):
@@ -46,7 +50,6 @@ class Menu_manage:
             print("2. Add New Items")
             print("3. Update Food Items")
             print("4. Delete Food Items")
-            # print("5. Update Availability")
             print("5. Exit")
 
             choice = input("\nEnter Your Choice: ").strip()
@@ -59,8 +62,6 @@ class Menu_manage:
                 self.update_menu_item()
             elif choice == "4":
                 self.delete_menu_item()
-            # elif choice == "5":
-            #     self.update_availability()
             elif choice == "5":
                 print("Exiting Menu Management...")
                 return
@@ -77,7 +78,6 @@ class Menu_manage:
             if item["food_name"].strip().lower() == food_name.strip().lower():
                 print("This Item is already added..")
                 continue
-        food_name = get_foodname()
         half_price = get_price()
         full_price = get_price()
         category = get_category()
@@ -259,27 +259,4 @@ class Menu_manage:
 
             print("Menu item not found.")
 
-    # # ---------------- UPDATE AVAILABILITY ----------------
-
-    # def update_availability(self):
-    #     data = self.load_data()
-    #     self.view_menu()
-    #     try:
-    #         item_id = int(input("Enter Item ID: "))
-    #     except ValueError:
-    #         print("Invalid ID.")
-    #         return
-    #     for item in data["menu_item"]:
-    #         if item["item_id"] == item_id:
-    #             choice = input("Available? (yes/no): ").strip().lower()
-    #             if choice == "yes":
-    #                 item["availability"] = True
-    #             elif choice == "no":
-    #                 item["availability"] = False
-    #             else:
-    #                 print("Please enter yes or no.")
-    #                 return
-    #             self.save_data(data)
-    #             print(f"Availability of "f"{item['food_name']} updated.")
-    #             return
-    #     print("Menu item not found.")
+  

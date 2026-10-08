@@ -8,7 +8,6 @@ class Inventory_Manage:
         self.inventory_file = "database/inventory.json"
         self.reorder_level = 10 
 
- 
     def load_inventory(self):
     
         if not os.path.exists(self.inventory_file):
@@ -59,7 +58,7 @@ class Inventory_Manage:
     def select_item(self, items):
       
         if len(items) == 0:
-            print("Inventory khaali hai")
+            print("Inventory is empty")
             return None
 
         self.show_items(items)
