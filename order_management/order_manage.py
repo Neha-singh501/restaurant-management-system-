@@ -4,6 +4,7 @@ import json
 import uuid
 from datetime import datetime
 from validation.validate import get_fullname
+from logs.logger import log_info, log_warning, log_error
 
 
 class OrderManagement:
@@ -17,47 +18,66 @@ class OrderManagement:
 
     def load_order(self):
         try:
+            log_info("Loading order data")
             with open(self.file_path , "r") as file:
                 data = json.load(file)
+            log_info("Order Data loaded successfully")
 
         except (FileNotFoundError , json.JSONDecodeError):
+            log_warning("File not found")
             return{"order" : []}
 
         if "order" not in data:
+            log_warning("Order key not found in order")
             data["order"] = []
 
         return data
 
     def save_order(self, data):
+            log_info("Saving order data")
             with open(self.file_path , "w") as file:
                 json.dump(data,file, indent = 4)
+            log_info("Saved order Successfully")
 
     def load_booking(self):
         try:
+            log_info("Loading booking data")
+
             with open(self.booking_path, "r") as file:
                 data = json.load(file)
+
+            log_info("Booking data loading Successfully")
+
         except (FileNotFoundError , json.JSONDecodeError):
+            log_warning("File Not Found")
+            log_error("Json Data not found")
             return{"booking" :[]}
+        
         if "booking" not in data:
+            log_warning("Booking key not found")
             data["booking"] = []
         return data
 
 
     def load_menu(self):
         try:
+            log_info("Load Menu data")
             with open(self.menu_path, "r") as file:
                 return json.load(file).get("menu_item", [])
+            log_info("Menu data load successfully")
         except (FileNotFoundError, json.JSONDecodeError):
             return []
 
     def generate_order_id(self,order):
-
+        log_info("Generate new order Id")
         existing_id = {ord.get("order_id") for ord in order}
 
         while True:
             order_id = "ORD" + uuid.uuid4().hex[:6].upper()
             if order_id not in existing_id :
+                log_info("unique id generate")
                 return order_id
+            
 
     def order_menu(self):
         while True:
@@ -74,6 +94,7 @@ class OrderManagement:
             choice = input("Enter Choice : ").strip()
 
             if choice =="1":
+                log_info("User selected create new order")
                 self.create_order()
             elif choice == "2":
               self.view_orders()
@@ -247,6 +268,7 @@ class OrderManagement:
         orders = data["order"]
 
         if not orders:
+            log_warning("Order not found")
             print("\nOrder not found")
             return
 
@@ -272,14 +294,17 @@ class OrderManagement:
     def update_order(self):
         data = self.load_order()
         orders = data["order"]
-
         if not orders:
+            log_warning("Order Not found")
             print("Order not found")
             return
-
+        
         self.view_orders()
+
         while True:
             order_id = input("\nEnter Order ID to Update : ").strip().upper()
+            if order_id == "0":
+                return
 
             found_order = None
             for order in orders:
@@ -327,18 +352,20 @@ class OrderManagement:
             print("Order not found")
             return
         self.view_orders()
+        while True:
+            order_id = input("Enter Order ID to cancel : ").strip().upper()
+            if order_id == "0":
+                return
 
-        order_id = input("Enter Order ID to cancel : ").strip().upper()
-
-        found_order = None
-
-        for order in orders:
-            if order.get("order_id") == order_id:
-                found_order = order
-                break
-        if found_order is None:
-            print("\nOrder ID not found")
-            return
+            found_order = None
+            for order in orders:
+                if order.get("order_id") == order_id:
+                    found_order = order
+                    break
+            if found_order is None:
+                print("\nOrder ID not found")
+                continue
+            break
 
         current_status = found_order.get("order_status")
 

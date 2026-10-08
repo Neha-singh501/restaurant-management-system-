@@ -1,0 +1,70 @@
+
+
+2026-10-08 06:27:08,089 - INFO - Program Start
+2026-10-08 06:27:11,529 - INFO - User selected sign up
+2026-10-08 06:27:12,762 - INFO - Admin sign in selected
+2026-10-08 07:13:56,284 - INFO - Program Start
+2026-10-08 07:13:57,988 - INFO - User selected sign up
+2026-10-08 07:14:05,507 - INFO - Admin sign in selected
+2026-10-08 07:14:10,288 - WARNING - Email validation failed : email address wrong
+2026-10-08 07:14:22,451 - INFO - Email Validation Successful
+2026-10-08 07:14:26,365 - INFO - 
+Login Successful!....
+2026-10-08 07:14:45,287 - INFO - Program Start
+2026-10-08 07:14:46,611 - INFO - User selected sign up
+2026-10-08 07:14:56,136 - INFO - Admin sign in selected
+2026-10-08 07:15:05,174 - INFO - Email Validation Successful
+2026-10-08 07:15:08,520 - INFO - 
+Login Successful!....
+2026-10-08 07:16:31,263 - INFO - user returned from role menu
+2026-10-08 07:16:32,748 - INFO - Program exited
+2026-10-08 11:10:46,849 - INFO - Program Start
+2026-10-08 11:10:46,850 - INFO - User Data load Successfully
+2026-10-08 11:10:46,850 - INFO - Admin already exist
+2026-10-08 11:10:48,184 - INFO - User selected sign up
+2026-10-08 11:10:48,845 - INFO - Admin sign in selected
+2026-10-08 11:10:48,845 - INFO - Admin Sign in process Started
+2026-10-08 11:10:59,197 - INFO - Email Validation Successful
+2026-10-08 11:11:02,093 - INFO - 
+Login Successful!....
+2026-10-08 11:11:02,093 - INFO - Admin Dashboard opened
+2026-10-08 11:11:06,651 - INFO - Admin Selected Bill Management 
+2026-10-08 11:15:47,800 - INFO - Program Start
+2026-10-08 11:15:47,806 - INFO - User Data load Successfully
+2026-10-08 11:15:47,806 - INFO - Admin already exist
+2026-10-08 11:15:49,027 - INFO - User selected sign up
+2026-10-08 11:15:49,855 - INFO - Admin sign in selected
+2026-10-08 11:15:49,855 - INFO - Admin Sign in process Started
+2026-10-08 11:15:57,696 - INFO - Email Validation Successful
+2026-10-08 11:16:00,958 - INFO - 
+Login Successful!....
+2026-10-08 11:16:00,958 - INFO - Admin Dashboard opened
+2026-10-08 11:16:05,651 - INFO - Admin Selected Bill Management 
+2026-10-08 11:16:59,093 - INFO - Program Start
+2026-10-08 11:16:59,093 - INFO - User Data load Successfully
+2026-10-08 11:16:59,093 - INFO - Admin already exist
+2026-10-08 11:17:01,486 - INFO - User selected sign up
+2026-10-08 11:17:02,103 - INFO - Admin sign in selected
+2026-10-08 11:17:02,103 - INFO - Admin Sign in process Started
+2026-10-08 11:17:09,612 - INFO - Email Validation Successful
+2026-10-08 11:17:12,653 - INFO - 
+Login Successful!....
+2026-10-08 11:17:12,653 - INFO - Admin Dashboard opened
+2026-10-08 11:17:15,107 - INFO - Admin Selected Bill Management 
+2026-10-08 11:18:47,864 - INFO - Bill management Complete
+2026-10-08 11:18:50,056 - INFO - Admin Returned From Dashboard
+2026-10-08 11:18:51,709 - INFO - user returned from role menu
+2026-10-08 11:18:52,828 - INFO - Program exited
+2026-10-08 11:38:32,701 - INFO - Program Start
+2026-10-08 11:38:32,701 - INFO - User Data load Successfully
+2026-10-08 11:38:32,701 - INFO - Admin already exist
+2026-10-08 11:38:34,846 - INFO - User selected sign up
+2026-10-08 11:38:36,018 - INFO - Admin sign in selected
+2026-10-08 11:38:36,018 - INFO - Admin Sign in process Started
+2026-10-08 11:38:52,975 - INFO - Email Validation Successful
+2026-10-08 11:38:57,591 - INFO - 
+Login Successful!....
+2026-10-08 11:38:57,591 - INFO - Admin Dashboard opened
+2026-10-08 11:43:35,931 - INFO - Admin Returned From Dashboard
+2026-10-08 11:43:37,566 - INFO - user returned from role menu
+2026-10-08 11:43:38,628 - INFO - Program exited

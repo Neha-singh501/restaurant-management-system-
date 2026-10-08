@@ -3,6 +3,7 @@ import os
 import json
 import uuid
 from validation.validate import get_fullname , get_username, get_phone_no, get_password, get_email
+from logs.logger import log_warning, log_info, log_error
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 file_path = os.path.join(BASE_DIR,"database","user.json")
@@ -22,19 +23,30 @@ def register_staff():
         choice = input("Enter Your Choice : ")
 
         if choice == "1":
+            log_info("Admin selected Add new staff")
             new_staff()
+            log_info("Completed Add staff")
         elif choice =="2":
+            log_info("Admin selected View staff")
             view_staff()
+            log_info("Complete View Staff")
         elif choice == "3":
-            update_staff() 
+            log_info("Admin selected Update Staff")
+            update_staff()
+            log_info("Complete Update Staff") 
         elif choice == "4":
+            log_info("Admin Selected Delete Staff")
             delete_staff() 
+            log_info("Delete staff complete")
         elif choice == "5":
+            log_info("Admin Select to back from dashbord")
             return
         else :
+            log_warning("Invalid Choice in Staff Management")
             print("Invalid Choice!....")
 
 def generate_staff_id(users):
+
     existing_id = {user.get("id") for user in users}
     while True:
         staff_id = "STF" + uuid.uuid4().hex[:6].upper()
@@ -46,6 +58,8 @@ def new_staff():
         with open(file_path ,"r") as file:
             data = json.load(file)
     except FileNotFoundError , json.JSONDecodeError:
+        log_error("File not Found")
+        log_error("Json Data not Found")
         data = {"users" : []}
        
 
@@ -58,10 +72,12 @@ def new_staff():
     
     
     for user in data["users"] :
-        if user.get("email") == email:
+        if user.get("username") == username:
+            log_warning("Username already Register, but try again")
             print("Username Already Registered")
             return
         if user.get("email") == email:
+            log_warning("Email already taken , but try again")
             print("Email Already Taken ")
             return
 
@@ -81,7 +97,7 @@ def new_staff():
     with open(file_path, "w") as file :
         json.dump(data,file, indent = 4)
 
-
+    log_info("Staff Register Successful")
     print("\nStaff Registered Successfully !\n")
     print(f"Your Staff ID Is: {staff_id}")
     print(f"Role : staff")
@@ -91,7 +107,9 @@ def view_staff():
     try :
         with open(file_path, "r") as file:
             data = json.load(file)
-    except FileNotFoundError , json.JSONDecodeError:
+    except (FileNotFoundError , json.JSONDecodeError):
+        log_warning("File Not Found")
+        log_warning("Json Data not found")
         print("File Not Found")
         return
 
@@ -128,6 +146,8 @@ def update_staff():
         with open(file_path, "r") as file:
             data = json.load(file)
     except (FileNotFoundError, json.JSONDecodeError):
+        log_warning("User File Not found")
+        log_warning("Json Data not found")
         print("User file not found.")
         return
     view_staff()
@@ -142,10 +162,12 @@ def update_staff():
                 break
 
         if staff is None:
+            log_warning("Invalid staff ID ")
             print("Staff ID not found. Please Enter Valid Staff ID")
             return 
 
         if staff.get("role") == "admin":
+            log_info("Update validation failed : try update admin")
             print("You can't update admin..")
             return
 
@@ -173,6 +195,7 @@ def update_staff():
         new_email = get_email()
         for user in data["users"]:
             if user.get("email") == new_email and user.get("id") != staff_id:
+                log_warning("Email Already register")
                 print("This Email is already registered with another user.")
                 return
         staff["email"] = new_email
@@ -196,11 +219,14 @@ def delete_staff():
         with open(file_path, "r") as file:
             data = json.load(file)
     except (FileNotFoundError, json.JSONDecodeError):
+        log_warning("User File not found")
+        log_warning("json file not found")
         print("User file not found .")
         return
 
     view_staff()
     while True:
+        log_info("Staff ID to update")
         staff_id = input("Enter Staff ID to Delete : ").strip().upper()
 
         staff = None
@@ -210,6 +236,7 @@ def delete_staff():
                 break
 
         if staff is None:
+            log_warning("Staff Id not found")
             print("Staff ID not found. Enter Valid Staff ID")
             return
 
@@ -231,6 +258,7 @@ def delete_staff():
     confirm = input("\nConfirm deletion..(yes/no): ").strip().lower()
 
     if confirm != "yes":
+        log_info("cancel Staff")
         print("Staff Deleting Cancelled!...")
         return
 
@@ -239,7 +267,7 @@ def delete_staff():
     json_text = json.dumps(data, indent=4)
     with open(file_path, "w") as file:
         file.write(json_text)
-
+    log_info("Delete staff Successfully")
     print("Staff Deleted Successfully!...")
 
 

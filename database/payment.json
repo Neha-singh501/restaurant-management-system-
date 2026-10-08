@@ -1,5 +1,44 @@
 {
     "payment": [
-   
+        {
+            "bill_id": "BILLBB9111",
+            "order_id": "ORD7523AE",
+            "payment_method": "UPI",
+            "reference": "123456",
+            "amount_due": 105.84,
+            "amount_paid": 105.84,
+            "change": 0,
+            "paid_at": "2026-10-08 00:40"
+        },
+        {
+            "bill_id": "BILL2E8693",
+            "order_id": "ORD86192E",
+            "payment_method": "Card",
+            "reference": "8765",
+            "amount_due": 349.86,
+            "amount_paid": 349.86,
+            "change": 0,
+            "paid_at": "2026-10-08 00:42"
+        },
+        {
+            "bill_id": "BILL60F05D",
+            "order_id": "ORD86192E",
+            "payment_method": "Cash",
+            "reference": "-",
+            "amount_due": 357.0,
+            "amount_paid": 400.0,
+            "change": 43.0,
+            "paid_at": "2026-10-08 01:01"
+        },
+        {
+            "bill_id": "BILL1DE6D7",
+            "order_id": "ORD7523AE",
+            "payment_method": "Cash",
+            "reference": "-",
+            "amount_due": 108.045,
+            "amount_paid": 110.0,
+            "change": 1.9549999999999983,
+            "paid_at": "2026-10-08 11:18"
+        }
     ]
 }

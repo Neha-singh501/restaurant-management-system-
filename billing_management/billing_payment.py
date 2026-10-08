@@ -3,6 +3,7 @@ import os
 import json
 import uuid
 from datetime import datetime
+from order_management.order_manage import OrderManagement
 
 
 class BillManagement:
@@ -64,7 +65,7 @@ class BillManagement:
             print("=" * 30)
             print("\n1. Generate Bill")
             print("2. View Bill")
-            print("3. process payment")
+            print("3. Process Payment")
             print("4. Back")
 
             choice = input("Enter Choice : ").strip()
@@ -88,7 +89,17 @@ class BillManagement:
         if not orders:
             print("\nOrder not found")
             return
-        
+
+        served_order = []
+
+        for order in orders:
+            if order["order_status"] =="served":
+                served_order.append(order)
+
+
+        ord_obj = OrderManagement()
+        ord_obj.view_orders()
+
         while True:
             order_id = input("\nEnter Order ID : ").strip().upper()
 
@@ -147,17 +158,17 @@ class BillManagement:
             subtotal += item_subtotal 
 
         while True:
-                try:
-                    discount_percent = float(input("\nEnter Discount : ").strip())
-                    if discount_percent < 0 :
-                        print("Discount Must be btwn 1 to 100 ")
-                        continue
-                    if discount_percent > 100:
-                        print("Discount must be btwn 1 to 100")
-                        continue
-                    break
-                except:
-                    print("Invalid Discount")
+            try:
+                discount_percent = float(input("\nEnter Discount : ").strip())
+                if discount_percent < 0 :
+                    print("Discount Must be btwn 1 to 100 ")
+                    continue
+                if discount_percent > 100:
+                    print("Discount must be btwn 1 to 100")
+                    continue
+                break
+            except:
+                print("Invalid Discount")
                 
         discount = subtotal * discount_percent /100
         after_discount = subtotal - discount
@@ -189,10 +200,11 @@ class BillManagement:
         bills.append(bill)
         self.save_bill(bill_data)
 
-        print("\nBill Generated Successfully")
+        print("\nBill Generated Successfully\n")
 
-        print("*"*50)
-        print("\n")
+        print("================================")
+        print("         BILL GENERATE")
+        print("================================")
         print(f"BILL ID : {bill_id}")
         print(f"customer_name : {found_order.get('customer_name')}")
         print(f"SubTotal : {subtotal:.2f}")
@@ -206,10 +218,10 @@ class BillManagement:
         bills = bill_data.get("bill")
 
         if not bills:
-            print("No Bill Found")
+            print("\nNo Bill Found\n")
             return
 
-        bill_id = input("Enter Bill ID : ").strip()
+        bill_id = input("\nEnter Bill ID : ").strip()
 
         found_bill = None
 
@@ -285,13 +297,12 @@ class BillManagement:
                 pending_bill.append(bill)
 
         if not pending_bill:
-            print("There are currently no pending bills.")
+            print("\nThere are currently no pending bills.")
             return
 
         print("\n------ Pending Bills------\n")
         print(f"{'Bill_id':<12}{'customer_name' :<20}{'subtotal':<10}")
         print("-"*50)
-
         for bill in pending_bill:
             print(f"{bill.get('bill_id'):<12}"
                   f"{bill.get('customer_name') :<20}"
@@ -300,42 +311,44 @@ class BillManagement:
         found_bill = None
 
         while True:
-            bill_id = input("Enter Bill ID : ").strip().upper()
+            bill_id = input("\nEnter Bill ID : ").strip().upper()
+            if bill_id == "0":
+                return
 
             for bill in pending_bill:
                 if bill.get("bill_id") == bill_id:
                     found_bill = bill
                     break
 
-            if not found_bill:
+            if found_bill:
                 break
             print("\nInvalid Bill ID ")
 
         total = found_bill.get("grand_total")
         print(f"\nAmount to Pay : {total:.2f}")
 
-
         amount_paid = total
         change = 0
         reference = "-"
-        while True:
-                    
+
+        while True:      
             print("\n1. Cash")
             print("2. UPI")
             print("3. Card")
+            print("4. back")
 
-            choice = input("Enter Your Choice : ").strip()
+            choice = input("\nEnter Your Choice : ").strip()
 
             if choice == "1":
                 method = "Cash"
                 while True:
                     try:
-                        amount_paid = float(input("Enter Amount : ")).strip()
+                        amount_paid = float(input("\nEnter Amount : ").strip())
                     except:
-                        print("\nplease enter number")
+                        print("\nplease enter correct amount")
                         continue
                     if amount_paid <total :
-                        print("The minimum amount required is {total:.2f}")
+                        print(f"The minimum amount required is {total:.2f}")
                         continue
                     break
                 change = amount_paid - total
@@ -344,19 +357,23 @@ class BillManagement:
             elif choice == "2":
                 method = "UPI"
                 while True:
-                    reference = input("Enter UPI ID : ").strip()
+                    reference = input("\nEnter UPI ID : ").strip()
                     if len(reference) >= 6:
                         break
                     print("\nUPI ID must be at least 6 character long..")
+                break
 
             elif choice == "3":
                 method = "Card"
                 while True:
-                    reference = input("Enter Last 4 digit : ").strip()
+                    reference = input("\nEnter Last 4 digit : ").strip()
                     if reference.isdigit() and len(reference) ==4:
                         break
                     print("Invalid Number")
                 break
+
+            elif choice == "4":
+                return
 
             else:
                 print("\nInvalid Choice...")
@@ -391,6 +408,8 @@ class BillManagement:
         print("*"*50)
 
         print(f"Bill ID : {found_bill.get('bill_id')}")
+        print(f"Order ID : {found_bill.get('order_id')}")
+        print(f"Customer : {found_bill.get('customer_name')}")
         print(f"Method : {method}")
         print(f"Total : {total:.2f}")
         if method == "Cash":

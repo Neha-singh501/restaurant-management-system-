@@ -2,6 +2,7 @@
 import json
 import os
 import uuid
+from logs.logger import log_info, log_warning, log_error
 from validation.validate import get_fullname,get_username , get_password , get_email , get_phone_no
 from dashboard.dashboards import Dashboard
 
@@ -15,16 +16,22 @@ class Auth :
     def load_users(self):
         try:
              with open(self.file_path, "r") as file:
-                  return json.load(file)
-        except:
-             return{"user" : []}
-
+                 data = json.load(file)
+                 log_info("User Data load Successfully")
+                 return data
+        except(FileNotFoundError,json.JSONDecodeError):
+             log_warning("User File not found.empty user")
+             log_error("invalid json data")
+             return{"users" : []}
+        
     def admin_exist(self):
 
         data = self.load_users()
         for user in data["users"]:
             if user.get("role") == "admin":
+                log_info("Admin already exist")
                 return True
+        log_info("No admin account found")
         return False
         
     def admin_sign_up(self):
@@ -33,6 +40,7 @@ class Auth :
 
         for user in data["users"]:
             if user.get("role") == "admin":
+                log_warning("Admin Already Exist. But again try")
                 print("\nAdmin already register...")
                 return
 
@@ -47,10 +55,12 @@ class Auth :
         password = get_password()
 
         for user in data["users"]:
-             if user.get["username"]== username :
+             if user.get("username")== username :
+                  log_warning("Admin registration failed : user name already exist ")
                   print("Username already Taken")
                   return
-             if user.get["email"] == email:
+             if user.get("email") == email:
+                  log_warning("Admin registration failed : email already exist")
                   print("Email Already create")
                   return
 
@@ -70,8 +80,9 @@ class Auth :
 
         with open(self.file_path, "w") as file:
            json.dump(data,file,indent =4)
-
-        print("\nAdmin registered successfully!")
+        print("\n")
+        log_info("Admin Registeration Successfully")
+        print("Admin registered successfully!")
         print(f"Admin ID : {admin_id}")
     
   
@@ -84,7 +95,9 @@ class Auth :
             with open(self.file_path,"r") as file:
                 data = json.load(file)
         
-        except FileNotFoundError, json.JSONDecodeError :
+        except (FileNotFoundError, json.JSONDecodeError) :
+            log_error("Login Failed : user file not found")
+            log_error("Login Failed : invalid json data")
             data = {"users" : []}
             return
         
@@ -95,6 +108,7 @@ class Auth :
                 user_found = True 
                 role = user.get("role")
                 if role != selected_role:
+                    log_warning("Access Denied : correct credentials but wrong role selected ")
                     print(f"\n Access Denied ! ..")
                     print("                 Your login credentials are correct.")
                     print(f"            Registered Role : {role.title()}")
@@ -102,29 +116,34 @@ class Auth :
                     print("                 You are not authorized to access this dashboard.")
                     print("                 Please select the correct role and try again.")
                     return
-                print("\nLogin Successful!....")
+                print(log_info("\nLogin Successful!...."))
 
                 if role == "staff":
                     print(f"Staff ID :  {user.get('id')}")
-                    print(f"Staff Name :  {user.get('full_Name')}")
+                    print(f"Staff Name :  {user.get('full_name')}")
 
                 dash_obj = Dashboard()
 
                 if role == "admin":
+                        log_info("Admin Dashboard opened")
                         dash_obj.admin_dashboard()
                         return
                 
                 elif role == "staff":
+                        log_info("Staff Dashboard opened")
                         dash_obj.staff_dashboard()
                         return
         if not user_found:
+            log_warning("Login Failed : invalid email or password")
             print("Login Failed!...")
 
     def admin_sign_in(self):
-         self.sign_in("admin")
+        log_info("Admin Sign in process Started")
+        self.sign_in("admin")
 
     def staff_sign_in(self):
-         self.sign_in("staff")
+        log_info("Staff Sign in Process Started")
+        self.sign_in("staff")
 
 
 
