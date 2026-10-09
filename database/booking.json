@@ -11,6 +11,31 @@
             "booking_time": "11:00",
             "duration": 1.0,
             "status": "booked"
+        },
+        {
+            "booking_id": "BKG06289B",
+            "customer_name": "Nidhi",
+            "phone_no": "8923125689",
+            "table_id": "100",
+            "number_of_guests": 2,
+            "booking_type": "advance",
+            "booking_date": "2026-10-09",
+            "booking_time": "22:00",
+            "duration": 1.0,
+            "status": "booked"
+        },
+        {
+            "booking_id": "BKGE472D1",
+            "customer_name": "Prity",
+            "phone_no": "9034237890",
+            "table_id": "103",
+            "number_of_guests": 4,
+            "booking_type": "advance",
+            "booking_date": "2026-10-09",
+            "booking_time": "22:00",
+            "duration": 1.0,
+            "status": "cancelled",
+            "cancelled_at": "2026-10-09 06:44:41.268481"
         }
     ]
 }

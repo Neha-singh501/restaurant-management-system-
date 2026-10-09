@@ -181,9 +181,9 @@ class OrderManagement:
             print("="*90)
             while True:
                 try:
-                    item_id = int(input("Enter Item ID : ").strip())
+                    item_id = input("Enter Item ID : ").strip()
                 except:
-                    print("Please Enter Number")
+                    print("Please Enter valid ID")
                     continue
 
                 selected_item = None

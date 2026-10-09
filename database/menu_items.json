@@ -231,6 +231,14 @@
             "half_price": 40.0,
             "full_price": 80.0,
             "availability": true
+        },
+        {
+            "item_id": "FD030",
+            "food_name": "Cake",
+            "category": "Fastfood",
+            "half_price": 150.0,
+            "full_price": 300.0,
+            "availability": true
         }
     ]
 }

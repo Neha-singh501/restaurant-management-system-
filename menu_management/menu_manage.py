@@ -152,7 +152,7 @@ class Menu_manage:
         self.view_menu()
         while True:
             try:
-                item_id = int(input("Enter Item ID: "))
+                item_id = input("Enter Item ID: ")
             except ValueError:
                 print("Invalid ID.")
                 continue
@@ -240,7 +240,7 @@ class Menu_manage:
         self.view_menu()
         while True:
             try:
-                item_id = int(input("Enter Item ID to delete: "))
+                item_id = input("Enter Item ID to delete: ")
             except ValueError:
                 print("Invalid ID.")
                 continue

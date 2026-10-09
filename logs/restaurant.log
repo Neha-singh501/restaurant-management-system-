@@ -169,3 +169,79 @@ Login Successful!....
 2026-10-08 13:30:49,512 - INFO - Admin Returned From Dashboard
 2026-10-08 13:30:51,281 - INFO - user returned from role menu
 2026-10-08 13:30:52,330 - INFO - Program exited
+2026-10-08 17:49:33,172 - INFO - Program Start
+2026-10-08 17:49:33,173 - INFO - User Data load Successfully
+2026-10-08 17:49:33,173 - INFO - Admin already exist
+2026-10-08 17:49:35,024 - INFO - User selected sign up
+2026-10-08 17:49:35,673 - INFO - Admin sign in selected
+2026-10-08 17:49:35,673 - INFO - Admin Sign in process Started
+2026-10-08 17:49:42,507 - INFO - Email Validation Successful
+2026-10-08 17:49:45,307 - INFO - Admin Dashboard opened
+2026-10-09 06:31:42,663 - INFO - Program Start
+2026-10-09 06:31:42,663 - INFO - User Data load Successfully
+2026-10-09 06:31:42,663 - INFO - Admin already exist
+2026-10-09 06:31:46,614 - INFO - User selected sign up
+2026-10-09 06:31:47,555 - INFO - Admin sign in selected
+2026-10-09 06:31:47,556 - INFO - Admin Sign in process Started
+2026-10-09 06:31:55,526 - INFO - Email Validation Successful
+2026-10-09 06:31:59,719 - INFO - Admin Dashboard opened
+2026-10-09 06:32:05,348 - INFO - Admin Selected Staff management
+2026-10-09 06:32:09,788 - INFO - Admin selected Add new staff
+2026-10-09 06:32:17,876 - INFO - Full name validation successful
+2026-10-09 06:32:26,016 - INFO - Username validation successful
+2026-10-09 06:32:38,188 - INFO - Email Validation Successful
+2026-10-09 06:32:47,455 - INFO - Phone no validation successful
+2026-10-09 06:33:04,212 - INFO - Staff Register Successful
+2026-10-09 06:33:04,213 - INFO - Completed Add staff
+2026-10-09 06:33:06,746 - INFO - Admin selected View staff
+2026-10-09 06:33:06,758 - INFO - Complete View Staff
+2026-10-09 06:33:34,292 - INFO - Admin selected Update Staff
+2026-10-09 06:34:11,437 - INFO - Phone no validation successful
+2026-10-09 06:34:11,437 - INFO - Complete Update Staff
+2026-10-09 06:34:14,026 - INFO - Admin selected View staff
+2026-10-09 06:34:14,038 - INFO - Complete View Staff
+2026-10-09 06:34:20,162 - INFO - Admin Selected Delete Staff
+2026-10-09 06:34:20,164 - INFO - Staff ID to update
+2026-10-09 06:34:37,372 - INFO - Delete staff Successfully
+2026-10-09 06:34:37,373 - INFO - Delete staff complete
+2026-10-09 06:34:41,602 - INFO - Admin selected View staff
+2026-10-09 06:34:41,610 - INFO - Complete View Staff
+2026-10-09 06:34:44,068 - INFO - Admin Select to back from dashbord
+2026-10-09 06:34:44,068 - INFO - Staff Management Complete
+2026-10-09 06:34:45,935 - INFO - Admin Selecter Menu Management
+2026-10-09 06:35:14,763 - INFO - Food Name validation successful
+2026-10-09 06:35:39,353 - INFO - Category Validation Successful
+2026-10-09 06:38:43,643 - INFO - Program Start
+2026-10-09 06:38:43,643 - INFO - User Data load Successfully
+2026-10-09 06:38:43,643 - INFO - Admin already exist
+2026-10-09 06:38:46,446 - INFO - User selected sign up
+2026-10-09 06:38:47,147 - INFO - Admin sign in selected
+2026-10-09 06:38:47,147 - INFO - Admin Sign in process Started
+2026-10-09 06:38:55,553 - INFO - Email Validation Successful
+2026-10-09 06:38:58,344 - INFO - Admin Dashboard opened
+2026-10-09 06:39:00,031 - INFO - Admin Selecter Menu Management
+2026-10-09 06:41:27,362 - INFO - Program Start
+2026-10-09 06:41:27,362 - INFO - User Data load Successfully
+2026-10-09 06:41:27,362 - INFO - Admin already exist
+2026-10-09 06:41:29,340 - INFO - User selected sign up
+2026-10-09 06:41:30,049 - INFO - Admin sign in selected
+2026-10-09 06:41:30,049 - INFO - Admin Sign in process Started
+2026-10-09 06:41:39,681 - INFO - Email Validation Successful
+2026-10-09 06:41:45,880 - INFO - Admin Dashboard opened
+2026-10-09 06:41:48,342 - INFO - Admin Selected Booking Management
+2026-10-09 06:42:11,522 - INFO - Full name validation successful
+2026-10-09 06:42:17,761 - INFO - Phone no validation successful
+2026-10-09 06:42:19,902 - INFO - Guest validation successful
+2026-10-09 06:42:56,497 - INFO - Duration Validation Successful
+2026-10-09 06:43:24,360 - INFO - Full name validation successful
+2026-10-09 06:43:31,791 - INFO - Phone no validation successful
+2026-10-09 06:43:35,440 - INFO - Guest validation successful
+2026-10-09 06:43:52,573 - INFO - Duration Validation Successful
+2026-10-09 06:45:01,727 - INFO - Booking Management Complete
+2026-10-09 06:45:03,799 - INFO - Admin Selected order management
+2026-10-09 06:45:05,886 - INFO - User selected view all order
+2026-10-09 06:45:05,886 - INFO - Loading order data
+2026-10-09 06:45:05,888 - INFO - Order Data loaded successfully
+2026-10-09 06:45:07,824 - INFO - User selected create new order
+2026-10-09 06:45:19,028 - INFO - Full name validation successful
+2026-10-09 06:45:19,028 - INFO - Load Menu data
