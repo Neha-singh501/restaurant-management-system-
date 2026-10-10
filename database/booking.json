@@ -36,6 +36,19 @@
             "duration": 1.0,
             "status": "cancelled",
             "cancelled_at": "2026-10-09 06:44:41.268481"
+        },
+        {
+            "booking_id": "BKGCD9FBC",
+            "customer_name": "Nandani",
+            "phone_no": "9002346754",
+            "table_id": "100",
+            "number_of_guests": 6,
+            "booking_type": "advance",
+            "booking_date": "2026-10-09",
+            "booking_time": "12:00",
+            "duration": 1.0,
+            "status": "cancelled",
+            "cancelled_at": "2026-10-09 11:08:16.608036"
         }
     ]
 }

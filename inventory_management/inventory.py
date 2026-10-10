@@ -75,7 +75,7 @@ class Inventory_Manage:
     def view_inventory(self):
         items = self.load_inventory()
         if len(items) == 0:
-            print("Inventory khaali hai")
+            print("File Not Found")
         else:
             self.show_items(items)
 
@@ -90,7 +90,7 @@ class Inventory_Manage:
 
         item["quantity"] = item["quantity"] + qty
         self.save_inventory(items)
-        print("Success: Stock updated. Naya stock:", item["quantity"], item["unit"])
+        print("Stock updated")
 
     # ---------- 3. Remove Stock ----------
     def remove_stock(self):
@@ -107,11 +107,11 @@ class Inventory_Manage:
 
         item["quantity"] = item["quantity"] - qty
         self.save_inventory(items)
-        print("Success: Stock removed. Bacha hua stock:", item["quantity"], item["unit"])
+        print("Stock removed")
 
-    # ---------- 4. Manage Inventory ----------
+   
     def new_item_id(self, items):
-        # sabse bada number dhoondho, usme 1 jodo -> FD001, FD002 ...
+      
         biggest = 0
         for item in items:
             number = int(item["id"][2:])
@@ -122,7 +122,7 @@ class Inventory_Manage:
     def manage_inventory(self):
         items = self.load_inventory()
 
-        # Select Category: pehle se maujood categories dikhao
+      
         categories = []
         for item in items:
             if item["category"] not in categories:
@@ -131,22 +131,22 @@ class Inventory_Manage:
         print("\nAvailable Categories:", categories)
         category = input("Enter Category: ").strip()
         if category == "":
-            print("Error: Category khaali nahi ho sakti")
+            print("Category can't be empty")
             return
 
         # Choose Action
         print("\n1. Add Item")
         print("2. Update Item")
         print("3. Delete Item")
-        action = input("Choose action: ")
+        choice = input("Choose choice: ")
 
-        # is category ke items nikalo
+      
         category_items = []
         for item in items:
             if item["category"] == category:
                 category_items.append(item)
 
-        if action == "1":
+        if choice == "1":
             name = self.get_text("Item name: ")
             quantity = self.get_quantity("Quantity: ")
             unit = self.get_text("Unit (Kg/Ltr/Pcs): ")
@@ -162,39 +162,38 @@ class Inventory_Manage:
             }
             items.append(new_item)
             self.save_inventory(items)
-            print("Success: Item added. ID:", new_item["id"])
+            print("Item added. ID:", new_item["id"])
 
-        elif action == "2":
+        elif choice == "2":
             item = self.select_item(category_items)
             if item == None:
                 return
 
-            print("Naye details daalo:")
             item["name"] = self.get_text("Item name: ")
             item["quantity"] = self.get_quantity("Quantity: ")
             item["unit"] = self.get_text("Unit (Kg/Ltr/Pcs): ")
             item["price"] = self.get_price()
 
             self.save_inventory(items)
-            print("Success: Item updated")
+            print("Item updated")
 
-        elif action == "3":
+        elif choice == "3":
             item = self.select_item(category_items)
             if item == None:
                 return
 
-            confirm = input("Kya aap sach me delete karna chahte ho? (y/n): ").lower()
+            confirm = input("do you want to delete? (y/n): ").lower()
             if confirm == "y":
                 items.remove(item)
                 self.save_inventory(items)
-                print("Success: Item deleted")
+                print("Item deleted")
             else:
-                print("Delete cancel ho gaya")
+                print("cancelled ")
 
         else:
-            print("Error: Galat option")
+            print("Invalid Choice")
 
-    # ---------- 5. Low Stock Alert ----------
+ 
     def low_stock_alert(self):
         items = self.load_inventory()
         found = False
@@ -206,7 +205,7 @@ class Inventory_Manage:
                 found = True
 
         if found == False:
-            print("Sab items ka stock theek hai")
+            print("Item Stock is good")
 
     # ---------- Inventory Menu ----------
     def inventory_menu(self):
@@ -233,11 +232,6 @@ class Inventory_Manage:
             elif choice == "6":
                 break
             else:
-                print("Galat option, dobara try karo")
+                print("Invalid Choice")
 
 
-# Ye file seedha run karo to menu chalega.
-# Dashboard se import karoge to apne aap nahi chalega.
-if __name__ == "__main__":
-    inventory = Inventory_Manage()
-    inventory.inventory_menu()

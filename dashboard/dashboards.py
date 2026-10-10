@@ -4,7 +4,7 @@ from staff_management.staff_manage import register_staff
 from booking_management.booking_table import BookingTable
 from order_management.order_manage import OrderManagement
 from billing_management.billing_payment import BillManagement
-# from inventory_management.inventory import Inventory_Manage
+from inventory_management.inventory import Inventory_Manage
 from logs.logger import log_info , log_warning 
 
 class Dashboard:
@@ -39,11 +39,10 @@ class Dashboard:
                 log_info("Menu Management Completed")
 
             elif choice == "3":
-                # log_info("Admin Selected Inventory Management")
-                # inv_obj = Inventory_Manage()
-                # inv_obj.inventory_menu()
-                # log_info("Inventory management Complete")
-                pass
+                log_info("Admin Selected Inventory Management")
+                inv_obj = Inventory_Manage()
+                inv_obj.inventory_menu()
+                log_info("Inventory management Complete")
 
             elif choice == "4":
                 log_info("Admin Selected Booking Management")

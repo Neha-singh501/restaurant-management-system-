@@ -245,3 +245,50 @@ Login Successful!....
 2026-10-09 06:45:07,824 - INFO - User selected create new order
 2026-10-09 06:45:19,028 - INFO - Full name validation successful
 2026-10-09 06:45:19,028 - INFO - Load Menu data
+2026-10-09 11:05:23,905 - INFO - Program Start
+2026-10-09 11:05:23,906 - INFO - User Data load Successfully
+2026-10-09 11:05:23,906 - INFO - Admin already exist
+2026-10-09 11:05:25,445 - INFO - User selected sign up
+2026-10-09 11:05:26,041 - INFO - Admin sign in selected
+2026-10-09 11:05:26,041 - INFO - Admin Sign in process Started
+2026-10-09 11:05:32,617 - INFO - Email Validation Successful
+2026-10-09 11:05:35,984 - INFO - Admin Dashboard opened
+2026-10-09 11:05:47,232 - INFO - Admin Returned From Dashboard
+2026-10-09 11:05:49,573 - INFO - Staff sign in selected
+2026-10-09 11:05:49,573 - INFO - Staff Sign in Process Started
+2026-10-09 11:06:02,890 - WARNING - Email validation failed :using sapce
+2026-10-09 11:06:16,418 - INFO - Email Validation Successful
+2026-10-09 11:06:25,626 - INFO - Staff Dashboard opened
+2026-10-09 11:06:28,080 - INFO - Staff Selected View Menu
+2026-10-09 11:06:28,085 - INFO - View Menu Complete
+2026-10-09 11:06:31,450 - INFO - Staff Started Order management
+2026-10-09 11:06:34,949 - INFO - User selected back from order management
+2026-10-09 11:06:34,949 - INFO - Complete Booking Management
+2026-10-09 11:06:36,426 - INFO - Staff Selected Bill Management
+2026-10-09 11:06:39,948 - INFO - Complete Billing Management
+2026-10-09 11:06:43,337 - INFO - Staff Selected Booking Management
+2026-10-09 11:06:52,938 - INFO - Full name validation successful
+2026-10-09 11:07:00,328 - WARNING - phone no validation failed : less 10 digit phone no
+2026-10-09 11:07:08,489 - INFO - Phone no validation successful
+2026-10-09 11:07:11,976 - INFO - Guest validation successful
+2026-10-09 11:07:41,494 - INFO - Duration Validation Successful
+2026-10-09 11:08:26,180 - INFO - Complete Booking mnaagement
+2026-10-09 11:08:28,848 - INFO - Staff Returned From Dashboard
+2026-10-09 11:08:33,084 - INFO - user returned from role menu
+2026-10-09 11:08:34,290 - INFO - Program exited
+2026-10-09 14:05:42,697 - INFO - Program Start
+2026-10-09 14:05:42,706 - INFO - User Data load Successfully
+2026-10-09 14:05:42,706 - INFO - Admin already exist
+2026-10-09 14:05:44,961 - INFO - User selected sign up
+2026-10-09 14:05:45,586 - INFO - Admin sign in selected
+2026-10-09 14:05:45,586 - INFO - Admin Sign in process Started
+2026-10-09 14:06:03,055 - INFO - Email Validation Successful
+2026-10-09 14:06:07,038 - INFO - Admin Dashboard opened
+2026-10-09 14:06:12,423 - INFO - Admin Selected Bill Management 
+2026-10-09 14:06:13,992 - INFO - Generate Bill ID
+2026-10-09 14:06:13,992 - INFO - Loading order data
+2026-10-09 14:06:14,003 - INFO - Successfully load Data 
+2026-10-09 14:06:39,588 - INFO - Bill management Complete
+2026-10-09 14:06:46,305 - INFO - Admin Returned From Dashboard
+2026-10-09 14:06:47,573 - INFO - user returned from role menu
+2026-10-09 14:06:48,507 - INFO - Program exited

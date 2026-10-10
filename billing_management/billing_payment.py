@@ -4,7 +4,7 @@ import json
 import uuid
 from datetime import datetime
 from order_management.order_manage import OrderManagement
-
+from logs.logger import log_info,log_warning,log_error
 
 class BillManagement:
 
@@ -18,28 +18,38 @@ class BillManagement:
 
     def load_bill(self):
         try:
+            log_info("Loading Bill data ")
             with open(self.bill_path, "r") as file:
                 data = json.load(file)
+                log_info("Load order data successfully")
         except (FileNotFoundError, json.JSONDecodeError):
+            log_warning("Bill File Not Found")
             return {"bill": []}
 
         if "bill" not in data:
+            log_warning("bill key not found in bill")
             data["bill"] = []
 
         return data
 
     def save_bill(self, data):
+        log_info("Save Bill data")
         with open(self.bill_path, "w") as file:
             json.dump(data, file, indent=4)
+            log_info("Successfully Save Data")
 
     def load_order(self):
         try:
+            log_info("Loading order data")
             with open(self.order_path, "r") as file:
                 data = json.load(file)
+                log_info("Successfully load Data ")
         except (FileNotFoundError, json.JSONDecodeError):
+            log_warning("Order File not found ")
             return {"order": []}
 
         if "order" not in data:
+            log_warning("Order key not found in order")
             data["order"] = []
 
         return data
@@ -71,6 +81,7 @@ class BillManagement:
             choice = input("Enter Choice : ").strip()
 
             if choice == "1":
+                log_info("Generate Bill ID")
                 self.generate_bill()
             elif choice == "2":
                 self.view_bill()
